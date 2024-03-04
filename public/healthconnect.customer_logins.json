@@ -1,0 +1,23 @@
+[
+  {
+    "_id": {
+      "$oid": "658fd46cc3d7f4d6fd9b1d5b"
+    },
+    "username": "tay_swift",
+    "password": "$2b$10$aJyZf4S9aZByMzV3Hv7tD.t8dKpPgsXgfyYTv9/NGSRlUXkC9DoFq"
+  },
+  {
+    "_id": {
+      "$oid": "658fd489c3d7f4d6fd9b1d5d"
+    },
+    "username": "taytaytay",
+    "password": "$2b$10$aJyZf4S9aZByMzV3Hv7tD.t8dKpPgsXgfyYTv9/NGSRlUXkC9DoFq"
+  },
+  {
+    "_id": {
+      "$oid": "658fd491c3d7f4d6fd9b1d5f"
+    },
+    "username": "tay_swift123",
+    "password": "$2b$10$aJyZf4S9aZByMzV3Hv7tD.t8dKpPgsXgfyYTv9/NGSRlUXkC9DoFq"
+  }
+]
