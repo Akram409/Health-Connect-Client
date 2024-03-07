@@ -1,171 +1,171 @@
-[
-  {
-    "_id": {
-      "$oid": "65c23e2101c3ed467eb19c45"
+  [
+    {
+      "_id": {
+        "$oid": "65c23e2101c3ed467eb19c45"
+      },
+      "username": "tay_swift",
+      "timestamp": "2023-01-01T10:00:00Z",
+      "heartRate": 75,
+      "bloodPressure": {
+        "systolic": 120,
+        "diastolic": 80
+      },
+      "oxygenLevel": 98
     },
-    "username": "tay_swift",
-    "timestamp": "2023-01-01T10:00:00Z",
-    "heartRate": 75,
-    "bloodPressure": {
-      "systolic": 120,
-      "diastolic": 80
+    {
+      "_id": {
+        "$oid": "65c2400c01c3ed467eb19c46"
+      },
+      "username": "tay_swift",
+      "timestamp": "2023-02-01T10:00:00Z",
+      "heartRate": 78,
+      "bloodPressure": {
+        "systolic": 126,
+        "diastolic": 76
+      },
+      "oxygenLevel": 99
     },
-    "oxygenLevel": 98
-  },
-  {
-    "_id": {
-      "$oid": "65c2400c01c3ed467eb19c46"
+    {
+      "_id": {
+        "$oid": "65c240b001c3ed467eb19c47"
+      },
+      "username": "tay_swift",
+      "timestamp": "2023-03-01T10:00:00Z",
+      "heartRate": 78,
+      "bloodPressure": {
+        "systolic": 120,
+        "diastolic": 80
+      },
+      "oxygenLevel": 98
     },
-    "username": "tay_swift",
-    "timestamp": "2023-02-01T10:00:00Z",
-    "heartRate": 78,
-    "bloodPressure": {
-      "systolic": 126,
-      "diastolic": 76
+    {
+      "_id": {
+        "$oid": "65c240d401c3ed467eb19c48"
+      },
+      "username": "tay_swift",
+      "timestamp": "2023-04-01T10:00:00Z",
+      "heartRate": 80,
+      "bloodPressure": {
+        "systolic": 126,
+        "diastolic": 84
+      },
+      "oxygenLevel": 98
     },
-    "oxygenLevel": 99
-  },
-  {
-    "_id": {
-      "$oid": "65c240b001c3ed467eb19c47"
+    {
+      "_id": {
+        "$oid": "65c240e901c3ed467eb19c49"
+      },
+      "username": "tay_swift",
+      "timestamp": "2023-05-01T10:00:00Z",
+      "heartRate": 88,
+      "bloodPressure": {
+        "systolic": 129,
+        "diastolic": 84
+      },
+      "oxygenLevel": 96
     },
-    "username": "tay_swift",
-    "timestamp": "2023-03-01T10:00:00Z",
-    "heartRate": 78,
-    "bloodPressure": {
-      "systolic": 120,
-      "diastolic": 80
+    {
+      "_id": {
+        "$oid": "65c2411a01c3ed467eb19c4a"
+      },
+      "username": "tay_swift",
+      "timestamp": "2023-05-01T10:00:00Z",
+      "heartRate": 78,
+      "bloodPressure": {
+        "systolic": 120,
+        "diastolic": 80
+      },
+      "oxygenLevel": 96
     },
-    "oxygenLevel": 98
-  },
-  {
-    "_id": {
-      "$oid": "65c240d401c3ed467eb19c48"
+    {
+      "_id": {
+        "$oid": "65c2418001c3ed467eb19c4b"
+      },
+      "username": "tay_swift",
+      "timestamp": "2023-06-01T10:00:00Z",
+      "heartRate": 70,
+      "bloodPressure": {
+        "systolic": 120,
+        "diastolic": 83
+      },
+      "oxygenLevel": 97
     },
-    "username": "tay_swift",
-    "timestamp": "2023-04-01T10:00:00Z",
-    "heartRate": 80,
-    "bloodPressure": {
-      "systolic": 126,
-      "diastolic": 84
+    {
+      "_id": {
+        "$oid": "65c2434901c3ed467eb19c4c"
+      },
+      "username": "tay_swift",
+      "timestamp": "2023-07-01T10:00:00Z",
+      "heartRate": 78,
+      "bloodPressure": {
+        "systolic": 118,
+        "diastolic": 80
+      },
+      "oxygenLevel": 98
     },
-    "oxygenLevel": 98
-  },
-  {
-    "_id": {
-      "$oid": "65c240e901c3ed467eb19c49"
+    {
+      "_id": {
+        "$oid": "65c243df01c3ed467eb19c4d"
+      },
+      "username": "tay_swift",
+      "timestamp": "2023-08-01T12:00:00Z",
+      "heartRate": 80,
+      "bloodPressure": {
+        "systolic": 118,
+        "diastolic": 76
+      },
+      "oxygenLevel": 98
     },
-    "username": "tay_swift",
-    "timestamp": "2023-05-01T10:00:00Z",
-    "heartRate": 88,
-    "bloodPressure": {
-      "systolic": 129,
-      "diastolic": 84
+    {
+      "_id": {
+        "$oid": "65c245d601c3ed467eb19c4e"
+      },
+      "username": "tay_swift",
+      "timestamp": "2023-09-01T12:00:00Z",
+      "heartRate": 88,
+      "bloodPressure": {
+        "systolic": 120,
+        "diastolic": 76
+      },
+      "oxygenLevel": 99
     },
-    "oxygenLevel": 96
-  },
-  {
-    "_id": {
-      "$oid": "65c2411a01c3ed467eb19c4a"
+    {
+      "_id": {
+        "$oid": "65c245ec01c3ed467eb19c4f"
+      },
+      "username": "tay_swift",
+      "timestamp": "2023-10-01T14:00:00Z",
+      "heartRate": 90,
+      "bloodPressure": {
+        "systolic": 128,
+        "diastolic": 80
+      },
+      "oxygenLevel": 97
     },
-    "username": "tay_swift",
-    "timestamp": "2023-05-01T10:00:00Z",
-    "heartRate": 78,
-    "bloodPressure": {
-      "systolic": 120,
-      "diastolic": 80
+    {
+      "_id": {
+        "$oid": "65c2468001c3ed467eb19c50"
+      },
+      "username": "tay_swift",
+      "timestamp": "2023-11-01T14:00:00Z",
+      "heartRate": 80,
+      "bloodPressure": {
+        "systolic": 120,
+        "diastolic": 80
+      },
+      "oxygenLevel": 98
     },
-    "oxygenLevel": 96
-  },
-  {
-    "_id": {
-      "$oid": "65c2418001c3ed467eb19c4b"
-    },
-    "username": "tay_swift",
-    "timestamp": "2023-06-01T10:00:00Z",
-    "heartRate": 70,
-    "bloodPressure": {
-      "systolic": 120,
-      "diastolic": 83
-    },
-    "oxygenLevel": 97
-  },
-  {
-    "_id": {
-      "$oid": "65c2434901c3ed467eb19c4c"
-    },
-    "username": "tay_swift",
-    "timestamp": "2023-07-01T10:00:00Z",
-    "heartRate": 78,
-    "bloodPressure": {
-      "systolic": 118,
-      "diastolic": 80
-    },
-    "oxygenLevel": 98
-  },
-  {
-    "_id": {
-      "$oid": "65c243df01c3ed467eb19c4d"
-    },
-    "username": "tay_swift",
-    "timestamp": "2023-08-01T12:00:00Z",
-    "heartRate": 80,
-    "bloodPressure": {
-      "systolic": 118,
-      "diastolic": 76
-    },
-    "oxygenLevel": 98
-  },
-  {
-    "_id": {
-      "$oid": "65c245d601c3ed467eb19c4e"
-    },
-    "username": "tay_swift",
-    "timestamp": "2023-09-01T12:00:00Z",
-    "heartRate": 88,
-    "bloodPressure": {
-      "systolic": 120,
-      "diastolic": 76
-    },
-    "oxygenLevel": 99
-  },
-  {
-    "_id": {
-      "$oid": "65c245ec01c3ed467eb19c4f"
-    },
-    "username": "tay_swift",
-    "timestamp": "2023-10-01T14:00:00Z",
-    "heartRate": 90,
-    "bloodPressure": {
-      "systolic": 128,
-      "diastolic": 80
-    },
-    "oxygenLevel": 97
-  },
-  {
-    "_id": {
-      "$oid": "65c2468001c3ed467eb19c50"
-    },
-    "username": "tay_swift",
-    "timestamp": "2023-11-01T14:00:00Z",
-    "heartRate": 80,
-    "bloodPressure": {
-      "systolic": 120,
-      "diastolic": 80
-    },
-    "oxygenLevel": 98
-  },
-  {
-    "_id": {
-      "$oid": "65c2468f01c3ed467eb19c51"
-    },
-    "username": "tay_swift",
-    "timestamp": "2023-12-01T14:00:00Z",
-    "heartRate": 82,
-    "bloodPressure": {
-      "systolic": 124,
-      "diastolic": 80
-    },
-    "oxygenLevel": 98
-  }
-]
+    {
+      "_id": {
+        "$oid": "65c2468f01c3ed467eb19c51"
+      },
+      "username": "tay_swift",
+      "timestamp": "2023-12-01T14:00:00Z",
+      "heartRate": 82,
+      "bloodPressure": {
+        "systolic": 124,
+        "diastolic": 80
+      },
+      "oxygenLevel": 98
+    }
+  ]

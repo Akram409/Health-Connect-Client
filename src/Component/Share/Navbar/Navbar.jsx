@@ -1,6 +1,27 @@
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Provider/Authprovider/AuthProvider";
 
 const Navbar = () => {
+  const { logOut, loading } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (user !== null && !loading) {
+      console.log(user?.email);
+    }
+  }, [user, loading]);
+
+  const handleLogOut = () => {
+    logOut();
+  };
+
+  if (loading) {
+    console.log(loading);
+    return <div>Loading....</div>;
+  }
+
+  console.log(user && user.email);
   return (
     <div className=" ">
       <div className="navbar bg-[#CFE2FF] ">
@@ -63,17 +84,29 @@ const Navbar = () => {
           HEALTH CONNECT
         </div>
         <div className="navbar-end gap-2">
-          <Link to="/login">
-            <button className="btn text-white" data-theme="dark">
-              Login
-            </button>
-          </Link>
-          <Link to="/signUp">
-          <button className="btn text-white" data-theme="dark">
-            SignUp
-          </button>
-          </Link>
-         
+          {!user && (
+            <>
+              <Link to="/login">
+                <button className="btn text-white" data-theme="dark">
+                  Login
+                </button>
+              </Link>
+              <Link to="/signUp">
+                <button className="btn text-white" data-theme="dark">
+                  SignUp
+                </button>
+              </Link>
+            </>
+          )}
+          {user && user.auth && (
+            <>
+             <Link to="/">
+                <button className="btn text-white" data-theme="dark" onClick={handleLogOut}>
+                LOGOUT
+                </button>
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </div>

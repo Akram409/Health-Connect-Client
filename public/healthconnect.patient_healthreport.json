@@ -1,0 +1,10 @@
+[
+  {
+    "_id": {
+      "$oid": "65e46d98c82527a867ad4f86"
+    },
+    "username": "tay_swift",
+    "health_report": "https://storage.cloud.google.com/healthconnect_fyp/taylor-swift-healthreport.pdf",
+    "date": "2024-03-01T12:00:00Z"
+  }
+]

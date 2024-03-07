@@ -1,0 +1,14 @@
+[{
+  "_id": {
+    "$oid": "65e46b0bc82527a867ad4f72"
+  },
+  "patient_id": "ObjectId('659017b3c3d7f4d6fd9b1d67')",
+  "date": "2024-02-02T14:07:00Z",
+  "doctor": "Dr. Albert Toh",
+  "diagnosis": "Pneumonia",
+  "treatment": "Prescribed antibiotics",
+  "prescription": [
+    "Amoxicillin",
+    "Ibuprofen"
+  ]
+}]

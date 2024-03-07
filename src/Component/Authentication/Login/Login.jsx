@@ -1,8 +1,51 @@
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, message } from "antd";
+import { AuthContext } from "../../../Provider/Authprovider/AuthProvider";
+import axios from "axios";
+import { useContext, useEffect, useState } from "react";
+import {
+  // NavLink,
+  // useLocation,
+  useNavigate,
+  useNavigation,
+} from "react-router-dom";
+import { validateEmail } from "../../../lib/util";
 
 const Login = () => {
-  const onFinish = (values) => {
-    console.log("Success:", values);
+  const { setUser, login } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const navigation = useNavigation();
+  // const location = useLocation();
+  // const from = location.state?.from?.pathname || "/";
+  const [allUser, setAllUser] = useState([]);
+
+  useEffect(() => {
+    // Function to fetch all users from the server
+    const fetchAllUsers = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/user");
+        setAllUser(response.data);
+      } catch (error) {
+        console.error("Error fetching users:", error);
+      }
+    };
+
+    fetchAllUsers();
+  }, []);
+  if (navigation.state === "loading") {
+    return <progress className="progress w-56"></progress>;
+  }
+  const onFinish = async ({ email, password }) => {
+    try {
+      login(email, password);
+
+      const foundUser = allUser.find((u) => u.email === email);
+      setUser(foundUser);
+
+      message.success("Login successful");
+      navigate("/");
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -40,6 +83,16 @@ const Login = () => {
                     {
                       required: true,
                       message: "Please input your Email!",
+                    },
+                    {
+                      validator: (rule, value) => {
+                        if (!validateEmail(value)) {
+                          return Promise.reject(
+                            "Please input a valid email address!"
+                          );
+                        }
+                        return Promise.resolve();
+                      },
                     },
                   ]}
                 >

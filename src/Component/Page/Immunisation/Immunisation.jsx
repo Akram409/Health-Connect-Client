@@ -1,8 +1,24 @@
 import { FaAngleRight } from "react-icons/fa";
 import Profile from "../../Share/Profile/Profile";
 import { FaFilePdf } from "react-icons/fa6";
+import { useEffect, useState } from "react";
 
 const Immunisation = () => {
+  const [datas, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/healthconnect.customer_healthdata.json");
+        const data = await response.json();
+        setData(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <div className="mx-16 mb-40 ">
       <Profile />

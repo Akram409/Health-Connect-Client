@@ -1,8 +1,25 @@
-import { Link } from "react-router-dom";
+
 import Profile from "../../Share/Profile/Profile";
 import { FiDownload } from "react-icons/fi";
+import { useEffect, useState } from "react";
 
 const Report = () => {
+  const [datas, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/healthconnect.patient_healthreport.json");
+        const data = await response.json();
+        setData(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="mx-16 mb-40">
       <Profile />
@@ -20,37 +37,19 @@ const Report = () => {
               </tr>
             </thead>
             <tbody className="font-semibold text-center">
-              {/* row 1 */}
-              <tr className="bg-base-200">
-                <th>1</th>
-                <td>Full Body Checkup</td>
-                <td>10-01-2022</td>
-                <td className="flex justify-center">
-                  <Link to="/">
-                    <FiDownload size="2.5em" />
-                  </Link>
-                </td>
-              </tr>
-              <tr>
-                <th>2</th>
-                <td>Full Body Checkup</td>
-                <td>20-01-2022</td>
-                <td className="flex justify-center">
-                  <Link to="/">
-                    <FiDownload size="2.5em" />
-                  </Link>
-                </td>
-              </tr>
-              <tr className="bg-base-200">
-                <th>3</th>
-                <td>X-Ray Imaging</td>
-                <td>11-01-2022</td>
-                <td className="flex justify-center">
-                  <Link to="/">
-                    <FiDownload size="2.5em" />
-                  </Link>
-                </td>
-              </tr>
+              {/* Rows */}
+              {datas.map((report, index) => (
+                <tr key={index} className={index % 2 === 0 ? "bg-base-200" : ""}>
+                  <th>{index + 1}</th>
+                  <td>{report.username}</td>
+                  <td>{new Date(report.date).toLocaleDateString()}</td>
+                  <td className="flex justify-center">
+                    <a href={report.health_report} target="_blank" rel="noopener noreferrer">
+                      <FiDownload size="2.5em" />
+                    </a>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

@@ -1,0 +1,68 @@
+[
+  {
+    "_id": {
+      "$oid": "65e469b8c82527a867ad4f6a"
+    },
+    "name": "Dr. Albert Toh",
+    "specialty": "General Practitioner",
+    "contact": {
+      "phone": "94732920",
+      "email": "Alberto@sgh.com"
+    },
+    "working_hours": {
+      "monday": {
+        "start": "09:00 AM",
+        "end": "05:00 PM"
+      },
+      "tuesday": {
+        "start": "09:00 AM",
+        "end": "05:00 PM"
+      },
+      "wednesday": {
+        "start": "09:00 AM",
+        "end": "05:00 PM"
+      },
+      "thursday": {
+        "start": "09:00 AM",
+        "end": "05:00 PM"
+      },
+      "friday": {
+        "start": "09:00 AM",
+        "end": "01:00 PM"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "65e469f0c82527a867ad4f6c"
+    },
+    "name": "Dr.Tony Tan",
+    "specialty": "Cardiologist",
+    "contact": {
+      "phone": "94443222",
+      "email": "TonyTan@sgh.com"
+    },
+    "working_hours": {
+      "monday": {
+        "start": "09:00 AM",
+        "end": "05:00 PM"
+      },
+      "tuesday": {
+        "start": "09:00 AM",
+        "end": "05:00 PM"
+      },
+      "wednesday": {
+        "start": "09:00 AM",
+        "end": "05:00 PM"
+      },
+      "thursday": {
+        "start": "09:00 AM",
+        "end": "05:00 PM"
+      },
+      "friday": {
+        "start": "09:00 AM",
+        "end": "01:00 PM"
+      }
+    }
+  }
+]
