@@ -1,0 +1,22 @@
+[
+  {
+    "_id": {
+      "$oid": "65e971ee2b94f74f3689d305"
+    },
+    "username": "tay_swift",
+    "billDate": "2024-02-29T12:00:00Z",
+    "totalAmount": "$159.92",
+    "cluster": "National Healthcare Group",
+    "location": "Tan Tock Seng Hospital"
+  },
+  {
+    "_id": {
+      "$oid": "65e973222b94f74f3689d30d"
+    },
+    "username": "tay_swift",
+    "billDate": "2024-01-20T12:00:00Z",
+    "totalAmount": "$14.00",
+    "cluster": "SingHealth ",
+    "location": "Punggol Polyclinic"
+  }
+]

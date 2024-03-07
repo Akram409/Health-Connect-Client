@@ -5,7 +5,7 @@ import { AuthContext } from "../../../Provider/Authprovider/AuthProvider";
 const Navbar = () => {
   const { logOut, loading } = useContext(AuthContext);
   const { user } = useContext(AuthContext);
-
+  console.log(user)
   useEffect(() => {
     if (user !== null && !loading) {
       console.log(user?.email);

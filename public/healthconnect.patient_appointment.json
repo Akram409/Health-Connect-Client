@@ -1,0 +1,26 @@
+[
+  {
+    "_id": {
+      "$oid": "65e974072b94f74f3689d310"
+    },
+    "doctor_id": "Dr Albert Toh",
+    "appointment_date": "2024-04-10",
+    "start_time": "10:00 AM",
+    "appointment_type": "Full Body Checkup",
+    "status": "Scheduled",
+    "notes": "Checkup before concert. Recommended by Punggol Polyclinic",
+    "username": "tay_swift"
+  },
+  {
+    "_id": {
+      "$oid": "65e974732b94f74f3689d318"
+    },
+    "doctor_id": "Dr Tony Tan",
+    "appointment_date": "2024-05-29",
+    "start_time": "12.00 AM",
+    "appointment_type": "ECG",
+    "status": "Scheduled",
+    "notes": "ECG screening",
+    "username": "tay_swift"
+  }
+]

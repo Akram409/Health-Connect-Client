@@ -3,11 +3,36 @@ import { IoMdCall } from "react-icons/io";
 import { IoChatbubble } from "react-icons/io5";
 import { MdBloodtype, MdEmergencyRecording } from "react-icons/md";
 import { GiSkullCrossedBones } from "react-icons/gi";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../../Provider/Authprovider/AuthProvider";
 
 const Profile = () => {
+  const {user} = useContext(AuthContext)
+  const [usersData, setUsersData] = useState("");
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/user/${user.email}`);
+        if (response.ok) {
+          const userData = await response.json();
+          // console.log(usersData?)
+          setUsersData(userData.user);
+        } else {
+          throw new Error('Failed to fetch user data');
+        }
+      } catch (error) {
+        console.error(error);
+        // Handle error
+      }
+    };
+
+    fetchUserData();
+  }, [user]);
+
   return (
     <div className="mt-16 space-y-5">
-      <h1 className="text-4xl font-semibold">Welcome X</h1>
+      <h1 className="text-4xl font-semibold">Welcome {usersData?.name}</h1>
       <div>
         <div className="card card-side bg-base-100 shadow-2xl">
           <figure>
@@ -20,23 +45,23 @@ const Profile = () => {
           <div className="card-body">
             <div className="grid grid-cols-1 space-y-6" >
               <div>
-                <h1 className="text-4xl font-bold">X</h1>
+                <h1 className="text-4xl font-bold">{usersData?.name}</h1>
               </div>
               <div>
                 <div className="grid grid-cols-5">
                   <div className="">
                     <h1 className="text-[#a2a2a2] font-semibold">GENDER</h1>
-                    <p className="font-semibold text-xl">Male</p>
+                    <p className="font-semibold text-xl">{usersData?.gender}</p>
                   </div>
                   <div className="">
                     <h1 className="text-[#a2a2a2] font-semibold">RELIGION</h1>
-                    <p className="font-semibold text-xl">Muslim</p>
+                    <p className="font-semibold text-xl">{usersData?.religion}</p>
                   </div>
                   <div className="">
                     <h1 className="text-[#a2a2a2] font-semibold">
                       MARTIAL STATUS
                     </h1>
-                    <p className="font-semibold text-xl">Single</p>
+                    <p className="font-semibold text-xl">{usersData?.status}</p>
                   </div>
                   <div className="">
                     <h1 className="text-[#a2a2a2] font-semibold">ETHNICITY</h1>
@@ -46,7 +71,7 @@ const Profile = () => {
                     <h1 className="text-[#a2a2a2] font-semibold">
                       EMAIL ADDRESS
                     </h1>
-                    <p className="font-semibold text-xl">xyz@gmail.com</p>
+                    <p className="font-semibold text-base">{usersData?.email}</p>
                   </div>
                 </div>
               </div>
@@ -58,8 +83,7 @@ const Profile = () => {
                     </div>
                     <div>
                       <h1 className="text-xs">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Quos deserunt numquam
+                      {usersData?.address?.street}, {usersData?.address?.city}, {usersData?.address?.state}, {usersData?.address?.postalCode}
                       </h1>
                     </div>
                   </div>
@@ -68,7 +92,7 @@ const Profile = () => {
                       <IoMdCall size="2em" />
                     </div>
                     <div>
-                      <h1>12345</h1>
+                      <h1>{usersData?.phone}</h1>
                     </div>
                   </div>
                 </div>
@@ -82,7 +106,7 @@ const Profile = () => {
                       <FaBirthdayCake size="2em" />
                     </div>
                     <div>
-                      <h1>June 10 1990</h1>
+                      <h1>{usersData?.dob}</h1>
                     </div>
                   </div>
                 </div>
@@ -94,7 +118,7 @@ const Profile = () => {
                     </div>
                     <div>
                       <h1 className="text-3xl font-semibold text-[#a2a2a2]">
-                        O+
+                      {usersData?.bloodGroup}
                       </h1>
                     </div>
                   </div>
@@ -103,7 +127,7 @@ const Profile = () => {
                       <MdEmergencyRecording size="2em" />
                     </div>
                     <div>
-                      <h1>Emergency Contact</h1>
+                      <h1>{usersData?.emergency}</h1>
                     </div>
                   </div>
                 </div>

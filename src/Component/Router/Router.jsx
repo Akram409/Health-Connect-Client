@@ -12,6 +12,7 @@ import Report from "../Page/Report/Report";
 import Bills from "../Page/Bills/Bills";
 import CaloriesIntake from "../Page/CaloriesIntake/CaloriesIntake";
 import Immunisation from "../Page/Immunisation/Immunisation";
+import PrivateRouter from "./PrivateRouter";
 
 
 
@@ -34,39 +35,39 @@ export const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <Profile />,
+        element: <PrivateRouter><Profile /></PrivateRouter>,
       },
       {
         path: "/dashboard",
-        element: <Dashboard />,
+        element: <PrivateRouter><Dashboard /></PrivateRouter>,
       },
       {
         path: "/appointment",
-        element: <Appointment />,
+        element: <PrivateRouter><Appointment /></PrivateRouter>,
       },
       {
         path: "/services",
-        element: <Services />,
+        element: <PrivateRouter><Services /></PrivateRouter>,
       },
       {
         path: "/healthData",
-        element: <HealthData />,
+        element: <PrivateRouter><HealthData /></PrivateRouter>,
       },
       {
         path: "/report",
-        element: <Report />,
+        element: <PrivateRouter><Report /></PrivateRouter>,
       },
       {
         path: "/bills",
-        element: <Bills />,
+        element: <PrivateRouter><Bills /></PrivateRouter>,
       },
       {
         path: "/caloriesIntake",
-        element: <CaloriesIntake />,
+        element: <PrivateRouter><CaloriesIntake /></PrivateRouter>,
       },
       {
         path: "/immunisation",
-        element: <Immunisation />,
+        element: <PrivateRouter><Immunisation /></PrivateRouter> ,
       },
     ],
   },

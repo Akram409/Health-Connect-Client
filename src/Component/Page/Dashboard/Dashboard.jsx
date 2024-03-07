@@ -13,6 +13,7 @@ import dayjs from "dayjs";
 import "dayjs/locale/zh-cn";
 import dayLocaleData from "dayjs/plugin/localeData";
 import { Calendar, Col, Radio, Row, Select, Typography, theme } from "antd";
+import { FaAngleRight } from "react-icons/fa";
 dayjs.extend(dayLocaleData);
 const Dashboard = () => {
   const [datas, setData] = useState([]);
@@ -65,7 +66,7 @@ const Dashboard = () => {
       <Profile />
       <div className="grid grid-cols-2 gap-5  mt-28">
         <div className="border-2 px-2 py-2">
-            <h1 className="text-2xl font-semibold">Vital Sign</h1>
+          <h1 className="text-2xl font-semibold">Vital Sign</h1>
           <div
             role="tablist"
             className="tabs tabs-bordered  font-bold tabs-lg w-full "
@@ -103,6 +104,83 @@ const Dashboard = () => {
             />
             <div role="tabpanel" className="tab-content p-10">
               {renderLineChart("oxygenLevel")}
+            </div>
+          </div>
+          <div>
+            <div className="border-4 p-2">
+              <h1 className="text-2xl font-bold mb-3">Medication</h1>
+              <div className="card bg-[#ffff] shadow-xl mb-5 flex-row p-2 border-4">
+                <div className="avatar">
+                  <div className="w-32 rounded">
+                    <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                  </div>
+                </div>
+                <div className="card-body">
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <p className="text-lg font-bold">NAPA EXTRA</p>
+                      <p className="text-base">
+                        We are using cookies for no reason.
+                      </p>
+                    </div>
+                    <div>
+                      <div className="flex items-center  gap-2">
+                        <div className="badge badge-accent badge-xs"></div>
+                        <p>XXXXX</p>
+                      </div>
+                      <p>Lorem, ipsum dolor</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="card bg-[#ffff] shadow-xl mb-5 flex-row p-2 border-4">
+                <div className="avatar">
+                  <div className="w-32 rounded">
+                    <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                  </div>
+                </div>
+                <div className="card-body">
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <p className="text-lg font-bold">NAPA EXTRA</p>
+                      <p className="text-base">
+                        We are using cookies for no reason.
+                      </p>
+                    </div>
+                    <div>
+                      <div className="flex items-center  gap-2">
+                        <div className="badge badge-accent badge-xs"></div>
+                        <p>XXXXX</p>
+                      </div>
+                      <p>Lorem, ipsum dolor</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="card bg-[#ffff] shadow-xl mb-5 flex-row p-2 border-4">
+                <div className="avatar">
+                  <div className="w-32 rounded">
+                    <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                  </div>
+                </div>
+                <div className="card-body">
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <p className="text-lg font-bold">NAPA EXTRA</p>
+                      <p className="text-base">
+                        We are using cookies for no reason.
+                      </p>
+                    </div>
+                    <div>
+                      <div className="flex items-center  gap-2">
+                        <div className="badge badge-accent badge-xs"></div>
+                        <p>XXXXX</p>
+                      </div>
+                      <p>Lorem, ipsum dolor</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -195,7 +273,9 @@ const Dashboard = () => {
                   <h2 className="text-3xl font-bold ">Bills</h2>
                   <p className="font-semibold text-4xl">$0 Overdue</p>
                   <div className="card-actions justify-center mt-5">
-                    <button className="btn border-2 border-black">View Bills</button>
+                    <button className="btn border-2 border-black">
+                      View Bills
+                    </button>
                   </div>
                 </div>
               </div>
