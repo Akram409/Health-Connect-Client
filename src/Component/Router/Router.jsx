@@ -14,8 +14,6 @@ import CaloriesIntake from "../Page/CaloriesIntake/CaloriesIntake";
 import Immunisation from "../Page/Immunisation/Immunisation";
 import PrivateRouter from "./PrivateRouter";
 
-
-
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -27,7 +25,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/login",
-        element: <Login />,
+        element:  <Login />,
       },
       {
         path: "/signUp",
@@ -39,7 +37,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <PrivateRouter><Dashboard /></PrivateRouter>,
+        element:  <PrivateRouter><Dashboard /></PrivateRouter>,
       },
       {
         path: "/appointment",
