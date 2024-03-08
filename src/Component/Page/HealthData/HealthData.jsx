@@ -6,6 +6,7 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  ResponsiveContainer,
 } from "recharts";
 import Profile from "../../Share/Profile/Profile";
 import { useEffect, useState } from "react";
@@ -33,7 +34,8 @@ const HealthData = () => {
   };
 
   const renderLineChart = (dataKey) => (
-    <LineChart width={1200} height={500} data={datas}>
+    <ResponsiveContainer width="100%" height={500}>
+    <LineChart  data={datas}>
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis
         dataKey="timestamp"
@@ -45,6 +47,8 @@ const HealthData = () => {
       <Legend />
       <Line type="monotone" dataKey={dataKey} stroke="#8884d8" />
     </LineChart>
+    </ResponsiveContainer>
+
   );
 
   return (

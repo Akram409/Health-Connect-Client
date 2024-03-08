@@ -8,10 +8,10 @@ const PrivateRouter = ({ children }) => {
       const from = location.state?.from?.pathname || "/";
     console.log(user)
 
-    if (user?.auth) {
+    if (user ) {
         return children;
     }
-    return user?.auth && <Navigate to="/login" state={{from: from}} replace></Navigate>
+    return <Navigate to="/login" state={{from: from}}></Navigate>
 };
 
 export default PrivateRouter;

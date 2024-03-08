@@ -52,15 +52,15 @@ const Login = () => {
   };
 
   return (
-    <div className="bg-[#CFE2FF] min-h-screen">
-      <div className="grid grid-cols-2 justify-items-center items-center lg:pt-[12%]">
-        <div className="flex flex-col items-center">
-          <h1 className="text-7xl text-[#3984F4] italic font-bold">
+    <div className="bg-[#CFE2FF] lg:min-h-screen">
+      <div className="grid grid-cols-1 lg:grid-cols-2 justify-center justify-items-center items-center py-10 lg:pt-[12%]">
+        <div className="flex flex-col items-center pb-10 lg:pb-0">
+          <h1 className="text-3xl lg:text-7xl text-[#3984F4] italic font-bold">
             HEALTH CONNECT
           </h1>
           <h1 className="font-bold text-xl">Connect to your health, always</h1>
         </div>
-        <div className="card w-2/3 bg-[#FFFFFF] text-primary-content shadow-2xl rounded-badge">
+        <div className="card w-1/2 lg:w-2/3 bg-[#FFFFFF] text-primary-content shadow-2xl rounded-badge">
           <div className="card-body">
             <h2 className="text-4xl font-semibold mb-5 text-black">Login</h2>
             <div className="">

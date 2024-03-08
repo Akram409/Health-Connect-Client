@@ -69,6 +69,10 @@ export const router = createBrowserRouter([
         path: "/immunisation",
         element: <PrivateRouter><Immunisation /></PrivateRouter> ,
       },
+      {
+        path: "/private",
+        element: <PrivateRouter /> ,
+      },
     ],
   },
 ]);

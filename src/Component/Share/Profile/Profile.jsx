@@ -34,12 +34,12 @@ const Profile = () => {
     <div className="mt-16 space-y-5">
       <h1 className="text-4xl font-semibold">Welcome {usersData?.name}</h1>
       <div>
-        <div className="card card-side bg-base-100 shadow-2xl">
+        <div className=" md:card md:card-side bg-base-100 shadow-2xl flex-none">
           <figure>
             <img
               src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg"
               alt="Movie"
-              className="w-full h-full"
+              className="w-full h-full px-10 md:px-0"
             />
           </figure>
           <div className="card-body">
@@ -48,7 +48,7 @@ const Profile = () => {
                 <h1 className="text-4xl font-bold">{usersData?.name}</h1>
               </div>
               <div>
-                <div className="grid grid-cols-5">
+                <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-5">
                   <div className="">
                     <h1 className="text-[#a2a2a2] font-semibold">GENDER</h1>
                     <p className="font-semibold text-xl">{usersData?.gender}</p>
@@ -71,11 +71,11 @@ const Profile = () => {
                     <h1 className="text-[#a2a2a2] font-semibold">
                       EMAIL ADDRESS
                     </h1>
-                    <p className="font-semibold text-base">{usersData?.email}</p>
+                    <h1 className="font-semibold text-sm">{usersData?.email}</h1>
                   </div>
                 </div>
               </div>
-              <div className="grid grid-cols-4 ">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
                 <div className="1">
                   <div className="flex justify-start items-center gap-3 mb-3">
                     <div>

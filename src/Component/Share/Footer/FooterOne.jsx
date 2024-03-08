@@ -5,7 +5,7 @@ const FooterOne = () => {
   return (
     <div>
       <footer className="footer footer-center p-10 bg-[#F2F2F2] rounded">
-        <nav className="grid grid-flow-col gap-10 font-semibold">
+        <nav className="grid grid-flow-row lg:grid-flow-col gap-10 font-semibold">
           <Link className="">Product</Link>
           <Link className="">Features</Link>
           <Link className="">Resources</Link>

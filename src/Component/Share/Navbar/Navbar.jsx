@@ -5,7 +5,7 @@ import { AuthContext } from "../../../Provider/Authprovider/AuthProvider";
 const Navbar = () => {
   const { logOut, loading } = useContext(AuthContext);
   const { user } = useContext(AuthContext);
-  console.log(user)
+  console.log(user);
   useEffect(() => {
     if (user !== null && !loading) {
       console.log(user?.email);
@@ -48,27 +48,6 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <a>Item 1</a>
-              </li>
-              <li>
-                <a>Parent</a>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a>Item 3</a>
-              </li>
-            </ul>
-          </div>
-          <div className="navbar-start hidden lg:flex">
-            <ul className="menu menu-horizontal px-1">
-              <li>
                 <Link to="/">Programmes</Link>
               </li>
               <li>
@@ -79,9 +58,22 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
+          <div className="navbar-start hidden md:flex">
+            <ul className="menu flex flex-row flex-nowrap px-1">
+              <li>
+                <h1>Programmes</h1>
+              </li>
+              <li>
+                <h1>About</h1>
+              </li>
+              <li>
+                <h1>Healthy Living</h1>
+              </li>
+            </ul>
+          </div>
         </div>
         <div className="navbar-center hidden lg:flex text-3xl italic font-bold">
-          HEALTH CONNECT
+          <Link to="/">HEALTH CONNECTHEALTH CONNECT</Link>
         </div>
         <div className="navbar-end gap-2">
           {!user && (
@@ -100,9 +92,13 @@ const Navbar = () => {
           )}
           {user && user.auth && (
             <>
-             <Link to="/">
-                <button className="btn text-white" data-theme="dark" onClick={handleLogOut}>
-                LOGOUT
+              <Link to="/">
+                <button
+                  className="btn text-white"
+                  data-theme="dark"
+                  onClick={handleLogOut}
+                >
+                  LOGOUT
                 </button>
               </Link>
             </>

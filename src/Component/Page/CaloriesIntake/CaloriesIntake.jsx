@@ -16,8 +16,8 @@ const CaloriesIntake = () => {
         </div>
 
         {/* Card here  */}
-        <div className="flex justify-around items-center border-2 py-10 rounded-box mb-4 bg-[#C3C3C3]">
-          <div className="text-3xl font-semibold text-center">
+        <div className="flex flex-col  justify-around items-center border-2 py-10 rounded-box mb-4 bg-[#C3C3C3]">
+          <div className="text-3xl font-semibold text-center mb-5">
             <h1>Morning</h1>
             <p>12am - 11am </p>
           </div>
@@ -25,8 +25,8 @@ const CaloriesIntake = () => {
             <button className="btn btn-lg">Add Food</button>
           </div>
         </div>
-        <div className="flex justify-around items-center border-2 py-10 rounded-box mb-4 bg-[#C3C3C3]">
-          <div className="text-3xl font-semibold text-center">
+        <div className="flex flex-col  justify-around items-center border-2 py-10 rounded-box mb-4 bg-[#C3C3C3]">
+          <div className="text-3xl font-semibold text-center mb-5">
             <h1>Morning</h1>
             <p>12am - 11am </p>
           </div>
@@ -34,8 +34,8 @@ const CaloriesIntake = () => {
             <button className="btn btn-lg">Add Food</button>
           </div>
         </div>
-        <div className="flex justify-around items-center border-2 py-10 rounded-box mb-4 bg-[#C3C3C3]">
-          <div className="text-3xl font-semibold text-center">
+        <div className="flex flex-col  justify-around items-center border-2 py-10 rounded-box mb-4 bg-[#C3C3C3]">
+          <div className="text-3xl font-semibold text-center mb-5">
             <h1>Morning</h1>
             <p>12am - 11am </p>
           </div>

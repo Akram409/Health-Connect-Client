@@ -1,40 +1,42 @@
-[{
-  "_id": {
-    "$oid": "65e46bb7c82527a867ad4f79"
+[
+  {
+    "_id": {
+      "$oid": "65e46bb7c82527a867ad4f79"
+    },
+    "name": "Amoxicillin",
+    "dosage": "500mg",
+    "usage": "Take 1 tablet three times a day with food"
   },
-  "name": "Amoxicillin",
-  "dosage": "500mg",
-  "usage": "Take 1 tablet three times a day with food"
-},
-{
-  "_id": {
-    "$oid": "65e46bb7c82527a867ad4f7a"
+  {
+    "_id": {
+      "$oid": "65e46bb7c82527a867ad4f7a"
+    },
+    "name": "Ibuprofen",
+    "dosage": "200mg",
+    "usage": "Take 1 tablet every 4-6 hours as needed for pain"
   },
-  "name": "Ibuprofen",
-  "dosage": "200mg",
-  "usage": "Take 1 tablet every 4-6 hours as needed for pain"
-},
-{
-  "_id": {
-    "$oid": "65e46bb7c82527a867ad4f7b"
+  {
+    "_id": {
+      "$oid": "65e46bb7c82527a867ad4f7b"
+    },
+    "name": "Lisinopril",
+    "dosage": "10mg",
+    "usage": "Take 1 tablet daily in the morning"
   },
-  "name": "Lisinopril",
-  "dosage": "10mg",
-  "usage": "Take 1 tablet daily in the morning"
-},
-{
-  "_id": {
-    "$oid": "65e46bb7c82527a867ad4f7c"
+  {
+    "_id": {
+      "$oid": "65e46bb7c82527a867ad4f7c"
+    },
+    "name": "Metformin",
+    "dosage": "500mg",
+    "usage": "Take 1 tablet twice a day with meals"
   },
-  "name": "Metformin",
-  "dosage": "500mg",
-  "usage": "Take 1 tablet twice a day with meals"
-},
-{
-  "_id": {
-    "$oid": "65e46bb7c82527a867ad4f7d"
-  },
-  "name": "Atorvastatin",
-  "dosage": "20mg",
-  "usage": "Take 1 tablet daily in the evening"
-}]
+  {
+    "_id": {
+      "$oid": "65e46bb7c82527a867ad4f7d"
+    },
+    "name": "Atorvastatin",
+    "dosage": "20mg",
+    "usage": "Take 1 tablet daily in the evening"
+  }
+]

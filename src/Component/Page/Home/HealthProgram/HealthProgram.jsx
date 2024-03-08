@@ -18,7 +18,7 @@ const HealthProgram = () => {
           <div className="hero-overlay bg-opacity-60"></div>
         </div>
       </div>
-      <div className="bg-white border px-28 py-7">
+      <div className="bg-white border px-5 lg:px-28 py-7">
         <h1 className="text-xl font-semibold pb-20">Special Feature</h1>
         <p>See More ›</p>
       </div>

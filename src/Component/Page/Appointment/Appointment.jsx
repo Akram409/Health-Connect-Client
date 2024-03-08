@@ -32,9 +32,9 @@ const Appointment = () => {
           aria-label="Upcoming"
           checked 
         />
-        <div role="tabpanel" className="tab-content p-10">
-          <div className="overflow-x-auto">
-            <table className="table">
+        <div role="tabpanel" className="tab-content lg:p-10 overflow-x-auto">
+          <div className="">
+            <table className="table table-pin-rows table-pin-cols">
               {/* head */}
               <thead className="text-center text-base">
                 <tr>
@@ -102,9 +102,9 @@ const Appointment = () => {
           className="tab"
           aria-label="Missed"
         />
-        <div role="tabpanel" className="tab-content p-10">
+        <div role="tabpanel" className="tab-content lg:p-10 overflow-x-auto">
         <div className="overflow-x-auto">
-            <table className="table">
+            <table className="table table-pin-rows table-pin-cols">
               {/* head */}
               <thead className="text-center text-base">
                 <tr>
@@ -172,9 +172,9 @@ const Appointment = () => {
           className="tab"
           aria-label="Open"
         />
-        <div role="tabpanel" className="tab-content p-10">
+        <div role="tabpanel" className="tab-content lg:p-10 overflow-x-auto">
         <div className="overflow-x-auto">
-            <table className="table">
+            <table className="table table-pin-rows table-pin-cols">
               {/* head */}
               <thead className="text-center text-base">
                 <tr>
@@ -235,7 +235,7 @@ const Appointment = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-end">
+      <div className="flex justify-center mt-5 lg:mt-0 lg:justify-end">
         <button className="btn border-2 border-black font-bold text-2xl text-black ">
           Book an Appointment
         </button>

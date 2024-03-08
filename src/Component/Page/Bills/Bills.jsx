@@ -27,8 +27,8 @@ const Bills = () => {
           Outstanding Bills by Cluster
         </h1>
         {datas.map((item, index) => <>
-            <div key={index} className="flex border-2 border-black rounded-box p-2 mb-4 bg-[#FFFF]">
-              <div className="grow-0 h-32 w-32">
+            <div key={index} className="lg:flex border-2 border-black rounded-box p-2 mb-4 bg-[#FFFF]">
+              <div className="lg:grow-0 h-32 md:w-32">
                 <div className="avatar">
                   <div className="w-32 rounded">
                     <img

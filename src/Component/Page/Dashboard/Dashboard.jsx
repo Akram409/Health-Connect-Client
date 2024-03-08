@@ -8,16 +8,31 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  ResponsiveContainer,
 } from "recharts";
 import dayjs from "dayjs";
 import "dayjs/locale/zh-cn";
 import dayLocaleData from "dayjs/plugin/localeData";
 import { Calendar, Col, Radio, Row, Select, Typography, theme } from "antd";
-import { FaAngleRight } from "react-icons/fa";
+
 dayjs.extend(dayLocaleData);
 const Dashboard = () => {
   const [datas, setData] = useState([]);
+  const [medicationdata, setMedicationData] = useState([]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/healthconnect.medication_info.json");
+        const data = await response.json();
+        setMedicationData(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -38,7 +53,8 @@ const Dashboard = () => {
   };
 
   const renderLineChart = (dataKey) => (
-    <LineChart width={600} height={500} data={datas}>
+    <ResponsiveContainer width="100%" height={500}>
+    <LineChart data={datas}>
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis
         dataKey="timestamp"
@@ -50,6 +66,8 @@ const Dashboard = () => {
       <Legend />
       <Line type="monotone" dataKey={dataKey} stroke="#8884d8" />
     </LineChart>
+    </ResponsiveContainer>
+
   );
   const { token } = theme.useToken();
   const onPanelChange = (value, mode) => {
@@ -64,7 +82,7 @@ const Dashboard = () => {
   return (
     <div className="mx-16 mb-40">
       <Profile />
-      <div className="grid grid-cols-2 gap-5  mt-28">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5  mt-28">
         <div className="border-2 px-2 py-2">
           <h1 className="text-2xl font-semibold">Vital Sign</h1>
           <div
@@ -79,7 +97,7 @@ const Dashboard = () => {
               aria-label="HeartRate"
               checked
             />
-            <div role="tabpanel" className="tab-content p-10">
+            <div role="tabpanel" className="tab-content py-5 lg:py-0 lg:p-10">
               {renderLineChart("heartRate")}
             </div>
 
@@ -90,7 +108,7 @@ const Dashboard = () => {
               className="tab"
               aria-label="Pressure"
             />
-            <div role="tabpanel" className="tab-content p-10">
+            <div role="tabpanel" className="tab-content py-5 lg:py-0 lg:p-10">
               {renderLineChart("bloodPressure.systolic")}
               {renderLineChart("bloodPressure.diastolic")}
             </div>
@@ -102,25 +120,27 @@ const Dashboard = () => {
               className="tab"
               aria-label="Oxygen"
             />
-            <div role="tabpanel" className="tab-content p-10">
+            <div role="tabpanel" className="tab-content py-5 lg:py-0 lg:p-10">
               {renderLineChart("oxygenLevel")}
             </div>
           </div>
           <div>
+          {/* Medication */}
             <div className="border-4 p-2">
               <h1 className="text-2xl font-bold mb-3">Medication</h1>
-              <div className="card bg-[#ffff] shadow-xl mb-5 flex-row p-2 border-4">
+              {medicationdata.map((medication) => (
+                <div key={medication._id} className="card bg-[#ffff] shadow-xl mb-5 flex-col md:flex-row p-2 border-4">
                 <div className="avatar">
-                  <div className="w-32 rounded">
+                  <div className="lg:w-32 w-full rounded">
                     <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
                   </div>
                 </div>
                 <div className="card-body">
-                  <div className="flex justify-between items-center">
+                  <div className="flex flex-col gap-4 md:flex-row lg:gap-0 justify-between items-center">
                     <div>
-                      <p className="text-lg font-bold">NAPA EXTRA</p>
+                      <p className="text-lg font-bold">{medication.name}</p>
                       <p className="text-base">
-                        We are using cookies for no reason.
+                      {medication.dosage}
                       </p>
                     </div>
                     <div>
@@ -128,59 +148,13 @@ const Dashboard = () => {
                         <div className="badge badge-accent badge-xs"></div>
                         <p>XXXXX</p>
                       </div>
-                      <p>Lorem, ipsum dolor</p>
+                      <p>10-02-2024</p>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="card bg-[#ffff] shadow-xl mb-5 flex-row p-2 border-4">
-                <div className="avatar">
-                  <div className="w-32 rounded">
-                    <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                  </div>
-                </div>
-                <div className="card-body">
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <p className="text-lg font-bold">NAPA EXTRA</p>
-                      <p className="text-base">
-                        We are using cookies for no reason.
-                      </p>
-                    </div>
-                    <div>
-                      <div className="flex items-center  gap-2">
-                        <div className="badge badge-accent badge-xs"></div>
-                        <p>XXXXX</p>
-                      </div>
-                      <p>Lorem, ipsum dolor</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="card bg-[#ffff] shadow-xl mb-5 flex-row p-2 border-4">
-                <div className="avatar">
-                  <div className="w-32 rounded">
-                    <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                  </div>
-                </div>
-                <div className="card-body">
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <p className="text-lg font-bold">NAPA EXTRA</p>
-                      <p className="text-base">
-                        We are using cookies for no reason.
-                      </p>
-                    </div>
-                    <div>
-                      <div className="flex items-center  gap-2">
-                        <div className="badge badge-accent badge-xs"></div>
-                        <p>XXXXX</p>
-                      </div>
-                      <p>Lorem, ipsum dolor</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+        ))}
+              
             </div>
           </div>
         </div>

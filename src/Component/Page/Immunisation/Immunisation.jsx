@@ -49,8 +49,8 @@ const Immunisation = () => {
             <h1 className="text-2xl font-bold mb-3">Nationally Recommended</h1>
             <div className="card bg-[#ffff] shadow-xl mb-5">
               <div className="card-body">
-                <div className="flex justify-between items-center">
-                  <p className="text-lg">We are using cookies for no reason.</p>
+                <div className="flex flex-col lg:flex-row justify-between items-center">
+                  <p className="text-lg mb-4">We are using cookies for no reason.</p>
                   <button className="btn btn-outline btn-accent font-bold">
                     View More <FaAngleRight size="1.5em" />
                   </button>
@@ -62,8 +62,8 @@ const Immunisation = () => {
             <h1 className="text-2xl font-bold mb-3">Covid Recommendation</h1>
             <div className="card bg-[#ffff] shadow-xl mb-5">
               <div className="card-body">
-                <div className="flex justify-between items-center">
-                  <p className="text-lg">We are using cookies for no reason.</p>
+                <div className="flex flex-col lg:flex-row  justify-between items-center">
+                  <p className="text-lg mb-4">We are using cookies for no reason.</p>
                   <button className="btn btn-outline btn-accent font-bold">
                     View More <FaAngleRight size="1.5em" />
                   </button>

@@ -26,7 +26,7 @@ const Report = () => {
       <div className="mt-28">
         <h1 className="text-5xl font-semibold ms-5 mb-10">Reports</h1>
         <div className="overflow-x-auto">
-          <table className="table">
+          <table className="table table-pin-rows table-pin-cols">
             {/* head */}
             <thead className="text-center text-base">
               <tr>
