@@ -14,6 +14,7 @@ import dayjs from "dayjs";
 import "dayjs/locale/zh-cn";
 import dayLocaleData from "dayjs/plugin/localeData";
 import { Calendar, Col, Radio, Row, Select, Typography, theme } from "antd";
+import axios from "axios";
 
 dayjs.extend(dayLocaleData);
 const Dashboard = () => {
@@ -23,9 +24,8 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/healthconnect.medication_info.json");
-        const data = await response.json();
-        setMedicationData(data);
+        const response = await axios.get("http://localhost:5000/medication");
+        setMedicationData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -36,9 +36,8 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/healthconnect.customer_healthdata.json");
-        const data = await response.json();
-        setData(data);
+        const response = await axios.get("http://localhost:5000/healthData");
+        setData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -54,20 +53,19 @@ const Dashboard = () => {
 
   const renderLineChart = (dataKey) => (
     <ResponsiveContainer width="100%" height={500}>
-    <LineChart data={datas}>
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis
-        dataKey="timestamp"
-        padding={{ left: 30, right: 30 }}
-        tickFormatter={formatYear} // Format the year on the X-axis
-      />
-      <YAxis />
-      <Tooltip />
-      <Legend />
-      <Line type="monotone" dataKey={dataKey} stroke="#8884d8" />
-    </LineChart>
+      <LineChart data={datas}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis
+          dataKey="timestamp"
+          padding={{ left: 30, right: 30 }}
+          tickFormatter={formatYear} // Format the year on the X-axis
+        />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Line type="monotone" dataKey={dataKey} stroke="#8884d8" />
+      </LineChart>
     </ResponsiveContainer>
-
   );
   const { token } = theme.useToken();
   const onPanelChange = (value, mode) => {
@@ -125,36 +123,36 @@ const Dashboard = () => {
             </div>
           </div>
           <div>
-          {/* Medication */}
+            {/* Medication */}
             <div className="border-4 p-2">
               <h1 className="text-2xl font-bold mb-3">Medication</h1>
               {medicationdata.map((medication) => (
-                <div key={medication._id} className="card bg-[#ffff] shadow-xl mb-5 flex-col md:flex-row p-2 border-4">
-                <div className="avatar">
-                  <div className="lg:w-32 w-full rounded">
-                    <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                  </div>
-                </div>
-                <div className="card-body">
-                  <div className="flex flex-col gap-4 md:flex-row lg:gap-0 justify-between items-center">
-                    <div>
-                      <p className="text-lg font-bold">{medication.name}</p>
-                      <p className="text-base">
-                      {medication.dosage}
-                      </p>
+                <div
+                  key={medication._id}
+                  className="card bg-[#ffff] shadow-xl mb-5 flex-col md:flex-row p-2 border-4"
+                >
+                  <div className="avatar">
+                    <div className="lg:w-32 w-full rounded">
+                      <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
                     </div>
-                    <div>
-                      <div className="flex items-center  gap-2">
-                        <div className="badge badge-accent badge-xs"></div>
-                        <p>XXXXX</p>
+                  </div>
+                  <div className="card-body">
+                    <div className="flex flex-col gap-4 md:flex-row lg:gap-0 justify-between items-center">
+                      <div>
+                        <p className="text-lg font-bold">{medication.name}</p>
+                        <p className="text-base">{medication.dosage}</p>
                       </div>
-                      <p>10-02-2024</p>
+                      <div>
+                        <div className="flex items-center  gap-2">
+                          <div className="badge badge-accent badge-xs"></div>
+                          <p>XXXXX</p>
+                        </div>
+                        <p>10-02-2024</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-        ))}
-              
+              ))}
             </div>
           </div>
         </div>

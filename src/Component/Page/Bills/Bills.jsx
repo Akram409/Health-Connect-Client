@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Profile from "../../Share/Profile/Profile";
 import { FaAngleRight } from "react-icons/fa";
+import axios from "axios";
 
 const Bills = () => {
   const [datas, setData] = useState([]);
@@ -8,9 +9,8 @@ const Bills = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/healthconnect.patient_bills.json");
-        const data = await response.json();
-        setData(data);
+        const response = await axios.get("http://localhost:5000/bills");
+        setData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }

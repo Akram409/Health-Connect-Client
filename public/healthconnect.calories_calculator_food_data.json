@@ -1,0 +1,171 @@
+[
+  {
+    "name": "Chicken Breast",
+    "calories": 165
+  },
+  {
+    "name": "Chicken Rice, with steamed chicken",
+    "calories": 557.7
+  },
+  {
+    "_id": {
+      "$oid": "65e449fec82527a867ad4f31"
+    },
+    "name": "Fish Ball Mee Pok, dry",
+    "calories": 481.5
+  },
+  {
+    "_id": {
+      "$oid": "65e44a19c82527a867ad4f33"
+    },
+    "name": "Mee Siam",
+    "calories": 521.15
+  },
+  {
+    "_id": {
+      "$oid": "65e44a88c82527a867ad4f35"
+    },
+    "name": "Economic Fried Bee Hoon",
+    "calories": 250
+  },
+  {
+    "_id": {
+      "$oid": "65e44af6c82527a867ad4f38"
+    },
+    "name": "Bubur Cha Cha",
+    "calories": 358
+  },
+  {
+    "_id": {
+      "$oid": "65e44b0bc82527a867ad4f3a"
+    },
+    "name": "Green Bean Soup",
+    "calories": 236.2
+  },
+  {
+    "_id": {
+      "$oid": "65e44b58c82527a867ad4f45"
+    },
+    "name": "Loh Mai Fan",
+    "calories": 422
+  },
+  {
+    "_id": {
+      "$oid": "65e44b85c82527a867ad4f47"
+    },
+    "name": "Bak Kut Teh",
+    "calories": 348
+  },
+  {
+    "_id": {
+      "$oid": "65e44ba0c82527a867ad4f49"
+    },
+    "name": "Curry Fish Head",
+    "calories": 1392
+  },
+  {
+    "_id": {
+      "$oid": "65e44bb9c82527a867ad4f4b"
+    },
+    "name": "Xiao Long Bao",
+    "calories": 46.5
+  },
+  {
+    "_id": {
+      "$oid": "65e44c0bc82527a867ad4f4d"
+    },
+    "name": "Lotus Root Soup with Pork Ribs",
+    "calories": 129.58
+  },
+  {
+    "_id": {
+      "$oid": "65e44c27c82527a867ad4f4f"
+    },
+    "name": "Pig's Organ Soup",
+    "calories": 160.24
+  },
+  {
+    "_id": {
+      "$oid": "65e44c3dc82527a867ad4f51"
+    },
+    "name": "Seafood Tom Yam Soup",
+    "calories": 285.24
+  },
+  {
+    "_id": {
+      "$oid": "65e44c63c82527a867ad4f53"
+    },
+    "name": "Kopi",
+    "calories": 134.75
+  },
+  {
+    "_id": {
+      "$oid": "65e44c71c82527a867ad4f55"
+    },
+    "name": "Kopi C",
+    "calories": 87.3
+  },
+  {
+    "_id": {
+      "$oid": "65e44c80c82527a867ad4f57"
+    },
+    "name": "Kopi O",
+    "calories": 85
+  },
+  {
+    "_id": {
+      "$oid": "65e44c97c82527a867ad4f59"
+    },
+    "name": "Milo Drink",
+    "calories": 120.18
+  },
+  {
+    "_id": {
+      "$oid": "65e44ca9c82527a867ad4f5b"
+    },
+    "name": "Teh",
+    "calories": 153.4
+  },
+  {
+    "_id": {
+      "$oid": "65e44cb9c82527a867ad4f5d"
+    },
+    "name": "Teh O",
+    "calories": 112.5
+  },
+  {
+    "_id": {
+      "$oid": "65e44ccbc82527a867ad4f5f"
+    },
+    "name": "Teh Tarik",
+    "calories": 229
+  },
+  {
+    "_id": {
+      "$oid": "65e44cfdc82527a867ad4f61"
+    },
+    "name": "Tomato and Egg Soup",
+    "calories": 147.19
+  },
+  {
+    "_id": {
+      "$oid": "65e44d48c82527a867ad4f63"
+    },
+    "name": "1 roti prata",
+    "calories": 209
+  },
+  {
+    "_id": {
+      "$oid": "65e44d5ec82527a867ad4f65"
+    },
+    "name": "tau huay",
+    "calories": 317
+  },
+  {
+    "_id": {
+      "$oid": "65e44daec82527a867ad4f67"
+    },
+    "name": "Kaya Toast",
+    "calories": 318
+  }
+]

@@ -1,3 +1,4 @@
+import axios from "axios";
 import Profile from "../../Share/Profile/Profile";
 import { useEffect, useState } from "react";
 
@@ -7,9 +8,8 @@ const Appointment = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/healthconnect.patient_appointment.json");
-        const data = await response.json();
-        setData(data);
+        const response = await axios.get("http://localhost:5000/appointments");
+        setData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }

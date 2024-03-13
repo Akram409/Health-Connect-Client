@@ -2,6 +2,7 @@
 import Profile from "../../Share/Profile/Profile";
 import { FiDownload } from "react-icons/fi";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Report = () => {
   const [datas, setData] = useState([]);
@@ -9,9 +10,8 @@ const Report = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/healthconnect.patient_healthreport.json");
-        const data = await response.json();
-        setData(data);
+        const response = await axios.get("http://localhost:5000/reports");
+        setData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }

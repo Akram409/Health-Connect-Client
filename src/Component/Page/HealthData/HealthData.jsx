@@ -10,6 +10,7 @@ import {
 } from "recharts";
 import Profile from "../../Share/Profile/Profile";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 const HealthData = () => {
   const [datas, setData] = useState([]);
@@ -17,9 +18,8 @@ const HealthData = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/healthconnect.customer_healthdata.json");
-        const data = await response.json();
-        setData(data);
+        const response = await axios.get("http://localhost:5000/healthData");
+        setData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
