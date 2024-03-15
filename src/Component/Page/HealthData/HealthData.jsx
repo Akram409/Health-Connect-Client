@@ -28,27 +28,40 @@ const HealthData = () => {
     fetchData();
   }, []);
 
-  const formatYear = (timestamp) => {
+  const formatMonth = (timestamp) => {
     const date = new Date(timestamp);
-    return date.getFullYear();
+    const monthNames = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+    return monthNames[date.getMonth()]; // Get the month name from the array based on the month index
   };
 
   const renderLineChart = (dataKey) => (
     <ResponsiveContainer width="100%" height={500}>
-    <LineChart  data={datas}>
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis
-        dataKey="timestamp"
-        padding={{ left: 30, right: 30 }}
-        tickFormatter={formatYear} // Format the year on the X-axis
-      />
-      <YAxis />
-      <Tooltip />
-      <Legend />
-      <Line type="monotone" dataKey={dataKey} stroke="#8884d8" />
-    </LineChart>
+      <LineChart data={datas}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis
+          dataKey="timestamp"
+          padding={{ left: 30, right: 30 }}
+          tickFormatter={formatMonth} // Format the month on the X-axis
+        />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Line type="monotone" dataKey={dataKey} stroke="#8884d8" />
+      </LineChart>
     </ResponsiveContainer>
-
   );
 
   return (

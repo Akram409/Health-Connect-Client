@@ -10,13 +10,15 @@ const NavbarTwo = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/user/${user.email}`);
+        const response = await fetch(
+          `http://localhost:5000/user/${user.email}`
+        );
         if (response.ok) {
           const userData = await response.json();
           // console.log(usersData?)
           setUsersData(userData.user);
         } else {
-          throw new Error('Failed to fetch user data');
+          throw new Error("Failed to fetch user data");
         }
       } catch (error) {
         console.error(error);
@@ -44,7 +46,7 @@ const NavbarTwo = () => {
 
   return (
     <div className="navbar bg-base-100">
-      <div className="navbar-start">
+      <div className="navbar-start max-w-[40%]">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
@@ -67,40 +69,58 @@ const NavbarTwo = () => {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <h1>Dashboard</h1>
+              <Link to="/dashboard">Dashboard</Link>
             </li>
             <li>
-              <h1>Appointment</h1>
+              <Link to="/appointment">Appointment</Link>
             </li>
             <li>
-              <h1>Services</h1>
+              <Link to="/services">Services</Link>
+            </li>
+            <li>
+              <Link to="/healthData">Health Data</Link>
+            </li>
+            <li>
+              <Link to="/bills">Bills</Link>
+            </li>
+            <li>
+              <Link to="/immunisation">Immunisation</Link>
             </li>
           </ul>
         </div>
         <Link className="text-3xl font-bold text-blue-800" to="/">
-          HEALTH CONNECTHEALTH CONNECT
+          HEALTH CONNECT
         </Link>
       </div>
-      <div className="navbar-end hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 items-center">
+      <div className="navbar-end hidden lg:flex w-full">
+        <ul className="menu menu-horizontal items-center">
           <li>
-            <h1>Dashboard</h1>
+            <Link to="/dashboard">Dashboard</Link>
           </li>
           <li>
-            <h1>Appointment</h1>
+            <Link to="/appointment">Appointment</Link>
           </li>
           <li>
-            <h1>Services</h1>
+            <Link to="/services">Services</Link>
           </li>
           <li>
-            <button className="btn border-2 border-black font-bold">
+            <Link to="/healthData">Health Data</Link>
+          </li>
+          <li>
+            <Link to="/bills">Bills</Link>
+          </li>
+          <li>
+            <Link to="/immunisation">Immunisation</Link>
+          </li>
+          <li>
+            <button className="btn border border-black font-semibold">
               {usersData?.name}
             </button>
           </li>
           <li>
             <Link to="/">
               <button
-                className="btn border-2 border-black font-bold"
+                className="btn border border-black font-semibold"
                 onClick={handleLogOut}
               >
                 LOGOUT

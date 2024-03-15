@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Profile from "../../Share/Profile/Profile";
 import { FaAngleRight } from "react-icons/fa";
 import axios from "axios";
-
+import { Link } from "react-router-dom";
 const Bills = () => {
   const [datas, setData] = useState([]);
 
@@ -18,7 +18,7 @@ const Bills = () => {
 
     fetchData();
   }, []);
-  console.log(datas)
+  console.log(datas);
   return (
     <div className="mx-16 mb-40 ">
       <Profile />
@@ -26,8 +26,12 @@ const Bills = () => {
         <h1 className="text-3xl font-bold mb-4">
           Outstanding Bills by Cluster
         </h1>
-        {datas.map((item, index) => <>
-            <div key={index} className="lg:flex border-2 border-black rounded-box p-2 mb-4 bg-[#FFFF]">
+        {datas.map((item, index) => (
+          <>
+            <div
+              key={index}
+              className="lg:flex border-2 border-black rounded-box p-2 mb-4 bg-[#FFFF]"
+            >
               <div className="lg:grow-0 h-32 md:w-32">
                 <div className="avatar">
                   <div className="w-32 rounded">
@@ -44,18 +48,41 @@ const Bills = () => {
                     <h1 className="text-3xl font-bold ms-3 mb-5">
                       {item.cluster}
                     </h1>
-                    <div className="flex items-center gap-5">
-                      <h2 className="ms-3">Amount to pay</h2>
-                      <h1 className="font-bold text-xl">{item.totalAmount}</h1>
-                    </div>
                   </div>
                 </div>
                 <div>
-                  <FaAngleRight size="2em" />
+                  {/* Open the modal using document.getElementById('ID').showModal() method */}
+                  <button
+                    className="btn"
+                    onClick={() =>
+                      document.getElementById("my_modal_5").showModal()
+                    }
+                  >
+                    <FaAngleRight size="2em" />
+                  </button>
+                  <dialog
+                    id="my_modal_5"
+                    className="modal modal-bottom sm:modal-middle"
+                  >
+                    <div className="modal-box">
+                    <div className="flex flex-col items-center gap-5">
+                      <h2 className="ms-3 font-semibold">Amount to pay</h2>
+                      <h1 className="font-bold text-xl">{item.totalAmount}</h1>
+                      <Link to="/dashboard"><button className="btn btn-warning font-bold">Make Payment</button></Link>
+                    </div>
+                      <div className="modal-action">
+                        <form method="dialog">
+                          {/* if there is a button in form, it will close the modal */}
+                          <button className="btn">Close</button>
+                        </form>
+                      </div>
+                    </div>
+                  </dialog>
                 </div>
               </div>
             </div>
-          </>)}
+          </>
+        ))}
       </div>
     </div>
   );

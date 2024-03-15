@@ -15,6 +15,7 @@ import "dayjs/locale/zh-cn";
 import dayLocaleData from "dayjs/plugin/localeData";
 import { Calendar, Col, Radio, Row, Select, Typography, theme } from "antd";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 dayjs.extend(dayLocaleData);
 const Dashboard = () => {
@@ -46,9 +47,23 @@ const Dashboard = () => {
     fetchData();
   }, []);
 
-  const formatYear = (timestamp) => {
+  const formatMonth = (timestamp) => {
     const date = new Date(timestamp);
-    return date.getFullYear();
+    const monthNames = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+    return monthNames[date.getMonth()]; // Get the month name from the array based on the month index
   };
 
   const renderLineChart = (dataKey) => (
@@ -58,7 +73,7 @@ const Dashboard = () => {
         <XAxis
           dataKey="timestamp"
           padding={{ left: 30, right: 30 }}
-          tickFormatter={formatYear} // Format the year on the X-axis
+          tickFormatter={formatMonth} // Format the month on the X-axis
         />
         <YAxis />
         <Tooltip />
@@ -245,9 +260,11 @@ const Dashboard = () => {
                   <h2 className="text-3xl font-bold ">Bills</h2>
                   <p className="font-semibold text-4xl">$0 Overdue</p>
                   <div className="card-actions justify-center mt-5">
-                    <button className="btn border-2 border-black">
-                      View Bills
-                    </button>
+                    <Link to="/bills">
+                      <button className="btn border-2 border-black">
+                        View Bills
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>

@@ -73,7 +73,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar-center hidden lg:flex text-3xl italic font-bold">
-          <Link to="/">HEALTH CONNECTHEALTH CONNECT</Link>
+          <Link to="/">HEALTH CONNECT</Link>
         </div>
         <div className="navbar-end gap-2">
           {!user && (
