@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Provider/Authprovider/AuthProvider";
+import GoogleTranslateWidget from "../../../lib/GoogleTranslateWidget";
 
 const Navbar = () => {
   const { logOut, loading } = useContext(AuthContext);
@@ -103,6 +104,9 @@ const Navbar = () => {
               </Link>
             </>
           )}
+        </div>
+        <div className="bg-black p-1 mx-3">
+          <GoogleTranslateWidget />
         </div>
       </div>
     </div>
