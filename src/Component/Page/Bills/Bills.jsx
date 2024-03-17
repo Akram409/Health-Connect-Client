@@ -2,22 +2,40 @@ import { useEffect, useState } from "react";
 import Profile from "../../Share/Profile/Profile";
 import { FaAngleRight } from "react-icons/fa";
 import axios from "axios";
-import { Link } from "react-router-dom";
+
 const Bills = () => {
   const [datas, setData] = useState([]);
+  const [selectData,setSelectData] = useState()
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/bills");
+      setData(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:5000/bills");
-        setData(response.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
     fetchData();
-  }, []);
+  }, [datas]);
+
+  const handleMakePayment = async (id) => {
+    try {
+      const response = await axios.post(`http://localhost:5000/bills/${id}`, {
+        totalAmount: 0 
+      });
+      console.log("Payment made successfully:", response.data);
+      // Assuming you want to refresh the data after payment is made
+      fetchData();
+    } catch (error) {
+      console.error("Error making payment:", error);
+    }
+  };
+  const handleSelectData = (data) => {
+    setSelectData(data);
+    document.getElementById("my_modal_5").showModal()
+  };
+
   console.log(datas);
   return (
     <div className="mx-16 mb-40 ">
@@ -48,15 +66,18 @@ const Bills = () => {
                     <h1 className="text-3xl font-bold ms-3 mb-5">
                       {item.cluster}
                     </h1>
+                    <div className="flex items-center gap-5">
+                      <h2 className="ms-3 font-semibold">Amount to pay</h2>
+                      <h1 className="font-bold text-xl">${item.totalAmount}</h1>
+                    </div>
                   </div>
                 </div>
                 <div>
                   {/* Open the modal using document.getElementById('ID').showModal() method */}
                   <button
                     className="btn"
-                    onClick={() =>
-                      document.getElementById("my_modal_5").showModal()
-                    }
+
+                    onClick={() => handleSelectData(item)}
                   >
                     <FaAngleRight size="2em" />
                   </button>
@@ -65,11 +86,18 @@ const Bills = () => {
                     className="modal modal-bottom sm:modal-middle"
                   >
                     <div className="modal-box">
-                    <div className="flex flex-col items-center gap-5">
-                      <h2 className="ms-3 font-semibold">Amount to pay</h2>
-                      <h1 className="font-bold text-xl">{item.totalAmount}</h1>
-                      <Link to="/dashboard"><button className="btn btn-warning font-bold">Make Payment</button></Link>
-                    </div>
+                      <div className="flex flex-col items-center gap-5">
+                        <h2 className="ms-3 font-semibold">Amount to pay</h2>
+                        <h1 className="font-bold text-xl">
+                        ${selectData?.totalAmount}
+                        </h1>
+                        <button
+                          className="btn btn-warning font-bold"
+                          onClick={() => handleMakePayment(selectData?._id)}
+                        >
+                          Make Payment
+                        </button>
+                      </div>
                       <div className="modal-action">
                         <form method="dialog">
                           {/* if there is a button in form, it will close the modal */}

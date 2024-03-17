@@ -13,6 +13,7 @@ import Bills from "../Page/Bills/Bills";
 import CaloriesIntake from "../Page/CaloriesIntake/CaloriesIntake";
 import Immunisation from "../Page/Immunisation/Immunisation";
 import PrivateRouter from "./PrivateRouter";
+import BookAppointment from "../Page/Appointment/BookAppointment";
 
 export const router = createBrowserRouter([
   {
@@ -66,6 +67,10 @@ export const router = createBrowserRouter([
       {
         path: "/immunisation",
         element: <PrivateRouter><Immunisation /></PrivateRouter> ,
+      },
+      {
+        path: "/bookappointment",
+        element: <PrivateRouter><BookAppointment /></PrivateRouter> ,
       },
       {
         path: "/private",

@@ -2,14 +2,14 @@
   {
     "username": "tay_swift",
     "billDate": "2024-02-29T12:00:00Z",
-    "totalAmount": "$159.92",
+    "totalAmount": 159.92,
     "cluster": "National Healthcare Group",
     "location": "Tan Tock Seng Hospital"
   },
   {
     "username": "tay_swift",
     "billDate": "2024-01-20T12:00:00Z",
-    "totalAmount": "$14.00",
+    "totalAmount": 14.00,
     "cluster": "SingHealth ",
     "location": "Punggol Polyclinic"
   }

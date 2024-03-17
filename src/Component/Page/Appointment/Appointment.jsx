@@ -1,6 +1,7 @@
 import axios from "axios";
 import Profile from "../../Share/Profile/Profile";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Appointment = () => {
   const [datas, setData] = useState([]);
@@ -17,6 +18,8 @@ const Appointment = () => {
 
     fetchData();
   }, []);
+
+
   return (
     <div className="mx-16 mb-40 ">
       <Profile />
@@ -30,7 +33,7 @@ const Appointment = () => {
           role="tab"
           className="tab"
           aria-label="Upcoming"
-          checked 
+          checked
         />
         <div role="tabpanel" className="tab-content lg:p-10 overflow-x-auto">
           <div className="">
@@ -62,7 +65,9 @@ const Appointment = () => {
                     <td>{appointment.appointment_type}</td>
                     <td>{appointment.start_time}</td>
                     <td>
-                    <div className="badge badge-accent">{appointment.status}</div>
+                      <div className="badge badge-accent">
+                        {appointment.status}
+                      </div>
                     </td>
                     <td className="flex justify-center">
                       <button
@@ -79,10 +84,12 @@ const Appointment = () => {
                       >
                         <div className="modal-box">
                           <h3 className="font-bold text-lg">Notes!</h3>
-                          <p className="py-4">{appointment.notes}</p>
+                          {appointment.notes}
                           <div className="modal-action">
                             <form method="dialog">
-                              <button className="btn btn-error text-white">Close</button>
+                              <button className="btn btn-error text-white">
+                                Close
+                              </button>
                             </form>
                           </div>
                         </div>
@@ -103,7 +110,7 @@ const Appointment = () => {
           aria-label="Missed"
         />
         <div role="tabpanel" className="tab-content lg:p-10 overflow-x-auto">
-        <div className="overflow-x-auto">
+          <div className="overflow-x-auto">
             <table className="table table-pin-rows table-pin-cols">
               {/* head */}
               <thead className="text-center text-base">
@@ -132,7 +139,9 @@ const Appointment = () => {
                     <td>{appointment.appointment_type}</td>
                     <td>{appointment.start_time}</td>
                     <td>
-                    <div className="badge badge-accent">{appointment.status}</div>
+                      <div className="badge badge-accent">
+                        {appointment.status}
+                      </div>
                     </td>
                     <td className="flex justify-center">
                       <button
@@ -152,7 +161,9 @@ const Appointment = () => {
                           <p className="py-4">{appointment.notes}</p>
                           <div className="modal-action">
                             <form method="dialog">
-                              <button className="btn btn-error text-white">Close</button>
+                              <button className="btn btn-error text-white">
+                                Close
+                              </button>
                             </form>
                           </div>
                         </div>
@@ -173,7 +184,7 @@ const Appointment = () => {
           aria-label="Open"
         />
         <div role="tabpanel" className="tab-content lg:p-10 overflow-x-auto">
-        <div className="overflow-x-auto">
+          <div className="overflow-x-auto">
             <table className="table table-pin-rows table-pin-cols">
               {/* head */}
               <thead className="text-center text-base">
@@ -202,7 +213,9 @@ const Appointment = () => {
                     <td>{appointment.appointment_type}</td>
                     <td>{appointment.start_time}</td>
                     <td>
-                    <div className="badge badge-accent">{appointment.status}</div>
+                      <div className="badge badge-accent">
+                        {appointment.status}
+                      </div>
                     </td>
                     <td className="flex justify-center">
                       <button
@@ -222,7 +235,9 @@ const Appointment = () => {
                           <p className="py-4">{appointment.notes}</p>
                           <div className="modal-action">
                             <form method="dialog">
-                              <button className="btn btn-error text-white">Close</button>
+                              <button className="btn btn-error text-white">
+                                Close
+                              </button>
                             </form>
                           </div>
                         </div>
@@ -236,9 +251,12 @@ const Appointment = () => {
         </div>
       </div>
       <div className="flex justify-center mt-5 lg:mt-0 lg:justify-end">
-        <button className="btn border-2 border-black font-bold text-2xl text-black ">
+        <Link to="/bookappointment"><button
+          className="btn border-2 border-black font-bold text-2xl text-black "
+        >
           Book an Appointment
-        </button>
+        </button></Link>
+    
       </div>
     </div>
   );

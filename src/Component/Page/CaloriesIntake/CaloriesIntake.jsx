@@ -3,12 +3,17 @@ import Profile from "../../Share/Profile/Profile";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../../../Provider/Authprovider/AuthProvider";
+import { MdDeleteOutline } from "react-icons/md";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+
+const today = new Date().toLocaleDateString("en-GB");
 
 const CaloriesIntake = () => {
   const { user } = useContext(AuthContext);
   const [datas, setData] = useState([]);
-  const [usersData, setUsersData] = useState("");
+  const [caloriesData, setCaloriesData] = useState([]);
   const [selectedFoods, setSelectedFoods] = useState([]);
+  const [currentDate, setCurrentDate] = useState(new Date());
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,19 +32,16 @@ const CaloriesIntake = () => {
 
   const handleFoodClick = async (item) => {
     try {
-      const newCalories = usersData?.calories + item.calories;
-      setSelectedFoods((prevSelectedFoods) => [
-        ...prevSelectedFoods,
-        item.name,
-      ]);
-      // Make PUT request to update user's calorie intake
-      await axios.post(`http://localhost:5000/user/calories/${user?.email}`, {
-        calories: newCalories,
-      });
+      const newCalories = item.calories;
+      setSelectedFoods((prevSelectedFoods) => [...prevSelectedFoods, item]);
 
-      // Show success message
+      // Make POST request to update user's calorie intake with today's date and item's calories
+      await axios.post(`http://localhost:5000/calories/${user?.email}`, {
+        date: currentDate,
+        calories: item.calories,
+      });
       message.success("Calories updated successfully");
-      setUsersData((prevUserData) => ({
+      setCaloriesData((prevUserData) => ({
         ...prevUserData,
         calories: newCalories,
       }));
@@ -47,40 +49,60 @@ const CaloriesIntake = () => {
       console.error("Error updating user calorie intake:", error);
     }
   };
-  console.log(selectedFoods);
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await fetch(
-          `http://localhost:5000/user/${user?.email}`
-        );
-        if (response.ok) {
-          const userData = await response.json();
-          setUsersData(userData.user);
-        } else {
-          throw new Error("Failed to fetch user data");
+  const handleFoodBtn = async (id, calories) => {
+    setSelectedFoods((prevSelectedFoods) =>
+      prevSelectedFoods.filter((it) => it._id !== id)
+    );
+    // Make POST request to update user's calorie intake with today's date and item's calories
+    await axios.put(`http://localhost:5000/calories/remove/${user?.email}`, {
+      date: currentDate,
+      calories: calories,
+    });
+  };
+  const fetchUserCaloriesData = async () => {
+    try {
+      const response = await axios.post(
+        `http://localhost:5000/user/caloriesData/${user?.email}`,
+        {
+          dates: currentDate,
         }
-      } catch (error) {
-        console.error(error);
-        // Handle error
-      }
-    };
+      );
+      const userData = response.data;
+      setCaloriesData(userData);
+    } catch (error) {
+      console.error(error);
+      // Handle error
+    }
+  };
 
-    fetchUserData();
-  }, [user, usersData]);
+  
+  useEffect(() => {
+    fetchUserCaloriesData();
+  }, [user, caloriesData, currentDate]);
+
+  const handleDateChange = (amount) => {
+    setSelectedFoods([])
+    const newDate = new Date(currentDate);
+    newDate.setDate(newDate.getDate() + amount);
+    setCurrentDate(newDate);
+  };
 
   return (
     <div className="mx-16 mb-40 ">
       <Profile />
       <div className="border-2 mt-28 p-10 rounded-box bg-[#D9D9D9]">
-        <h1 className="text-3xl font-semibold mb-5 text-center">
-          Calories intake for 4 Nov 2023
-        </h1>
+        <div className="flex  items-center justify-center mb-5 gap-5">
+          <FaAngleLeft size="2em" className="cursor-pointer" onClick={() => handleDateChange(-1)} />
+          <h1 className="text-3xl font-semibold text-center">
+            Calories intake for {currentDate.toLocaleDateString("en-GB")}
+          </h1>
+          <FaAngleRight size="2em" className="cursor-pointer" onClick={() => handleDateChange(1)}/>
+        </div>
         <div className="">
           <div className="text-center flex justify-evenly items-center gap-4 p-10 bg-[#FFFF] rounded-box mb-6">
-            <div>
+            <div className="min-w-[40%]">
               <h1 className="text-4xl font-semibold">
-                {usersData?.calories} Kcal
+                {caloriesData[0]?.calories} Kcal
               </h1>
               <h1 className="text-4xl font-semibold text-primary">
                 View my daily summary
@@ -90,10 +112,12 @@ const CaloriesIntake = () => {
               {selectedFoods.map((item, index) => (
                 <>
                   <button
+                    className="btn btn-primary text-white  btn-xs sm:btn-sm md:btn-md"
                     key={index}
-                    className="btn btn-primary text-white  btn-xs sm:btn-sm md:btn-md mx-1 my-1"
+                    onClick={() => handleFoodBtn(item._id, item.calories)}
                   >
-                    <span className="text-xl font-bold">{item}</span>
+                    <span className="text-xl font-bold">{item.name}</span>
+                    <MdDeleteOutline size="1.8em" />
                   </button>
                 </>
               ))}
@@ -103,7 +127,7 @@ const CaloriesIntake = () => {
 
         {/* Card here  */}
         <div className="flex justify-evenly items-center border-2 py-5 rounded-box mb-4 bg-[#C3C3C3]">
-          <div className="text-center">
+          <div className="text-center min-w-[40%]">
             <div className="text-3xl font-semibold text-center mb-5">
               <h1>Morning</h1>
               <p>12am - 11am </p>
@@ -147,10 +171,12 @@ const CaloriesIntake = () => {
             {selectedFoods.map((item, index) => (
               <>
                 <button
+                  className="btn btn-primary text-white  btn-xs sm:btn-sm md:btn-md"
                   key={index}
-                  className="btn btn-primary text-white  btn-xs sm:btn-sm md:btn-md mx-1 my-1"
+                  onClick={() => handleFoodBtn(item._id)}
                 >
-                  <span className="text-xl font-bold">{item}</span>
+                  <span className="text-xl font-bold">{item.name}</span>
+                  <MdDeleteOutline size="1.8em" />
                 </button>
               </>
             ))}
@@ -162,43 +188,3 @@ const CaloriesIntake = () => {
 };
 
 export default CaloriesIntake;
-{
-  /* <div className="flex flex-col  justify-around items-center border-2 py-10 rounded-box mb-4 bg-[#C3C3C3]">
-          <div className="text-3xl font-semibold text-center mb-5">
-            <h1>Morning</h1>
-            <p>12am - 11am </p>
-          </div>
-          <div>
-            <button
-              className="btn btn-accent font-semibold"
-              onClick={() => document.getElementById("my_modal_5").showModal()}
-            >
-              Add Food
-            </button>
-            <dialog id="my_modal_5" className="modal ">
-              <div className="modal-box w-11/12 max-w-5xl">
-                <h3 className="font-bold text-lg text-center">Food List!</h3>
-                <div className="grid md:grid-cols-2 grid-cols-1">
-                  {datas.map((item, index) => (
-                    <button
-                      key={index}
-                      className="btn btn-primary text-white  btn-xs sm:btn-sm md:btn-md lg:btn-lg mx-1 my-1"
-                      onClick={() => handleFoodClick(item.calories)}
-                    >
-                      <span className="text-xl font-bold">{item.name}</span> :{" "}
-                      {item.calories}
-                    </button>
-                  ))}
-                </div>
-
-                <div className="modal-action">
-                  <form method="dialog">
-                    {/* if there is a button in form, it will close the modal 
-                    <button className="btn">Close</button>
-                  </form>
-                </div>
-              </div>
-            </dialog>
-          </div>
-        </div> */
-}
