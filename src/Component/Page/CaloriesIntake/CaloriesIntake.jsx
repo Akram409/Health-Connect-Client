@@ -6,8 +6,6 @@ import { AuthContext } from "../../../Provider/Authprovider/AuthProvider";
 import { MdDeleteOutline } from "react-icons/md";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
-const today = new Date().toLocaleDateString("en-GB");
-
 const CaloriesIntake = () => {
   const { user } = useContext(AuthContext);
   const [datas, setData] = useState([]);
@@ -39,6 +37,7 @@ const CaloriesIntake = () => {
       await axios.post(`http://localhost:5000/calories/${user?.email}`, {
         date: currentDate,
         calories: item.calories,
+        foodName: item.name,
       });
       message.success("Calories updated successfully");
       setCaloriesData((prevUserData) => ({
@@ -49,7 +48,7 @@ const CaloriesIntake = () => {
       console.error("Error updating user calorie intake:", error);
     }
   };
-  const handleFoodBtn = async (id, calories) => {
+  const handleFoodBtn = async (id, calories,name) => {
     setSelectedFoods((prevSelectedFoods) =>
       prevSelectedFoods.filter((it) => it._id !== id)
     );
@@ -57,8 +56,10 @@ const CaloriesIntake = () => {
     await axios.put(`http://localhost:5000/calories/remove/${user?.email}`, {
       date: currentDate,
       calories: calories,
+      foodName: name,
     });
   };
+
   const fetchUserCaloriesData = async () => {
     try {
       const response = await axios.post(
@@ -69,24 +70,25 @@ const CaloriesIntake = () => {
       );
       const userData = response.data;
       setCaloriesData(userData);
+      setSelectedFoods(userData[0] ? userData[0].food  : []);
     } catch (error) {
       console.error(error);
       // Handle error
     }
   };
 
-  
   useEffect(() => {
     fetchUserCaloriesData();
   }, [user, caloriesData, currentDate]);
 
   const handleDateChange = (amount) => {
-    setSelectedFoods([])
+
     const newDate = new Date(currentDate);
     newDate.setDate(newDate.getDate() + amount);
     setCurrentDate(newDate);
   };
 
+  console.log(currentDate.toLocaleDateString("en-GB"))
   return (
     <div className="mx-16 mb-40 ">
       <Profile />
@@ -114,7 +116,7 @@ const CaloriesIntake = () => {
                   <button
                     className="btn btn-primary text-white  btn-xs sm:btn-sm md:btn-md"
                     key={index}
-                    onClick={() => handleFoodBtn(item._id, item.calories)}
+                    onClick={() => handleFoodBtn(item._id, item.calories,item.name)}
                   >
                     <span className="text-xl font-bold">{item.name}</span>
                     <MdDeleteOutline size="1.8em" />

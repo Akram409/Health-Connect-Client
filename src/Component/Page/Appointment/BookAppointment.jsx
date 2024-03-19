@@ -10,9 +10,10 @@ import {
 import axios from "axios";
 import dayjs from "dayjs";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 const BookAppointment = () => {
   const [selectedDate, setSelectedDate] = useState("");
-
+  const navigate = useNavigate();
   const dateChange = ( dateString) => {
     setSelectedDate(dateString);
   };
@@ -33,6 +34,7 @@ const BookAppointment = () => {
 
       // Display success message using Ant Design message component
       message.success("Appointment added successfully");
+      navigate("/appointment")
     } catch (error) {
       console.error("SignUp failed:", error?.response?.data?.error);
       // Display error message using Ant Design message component
