@@ -35,7 +35,7 @@ const CaloriesIntake = () => {
 
       // Make POST request to update user's calorie intake with today's date and item's calories
       await axios.post(`http://localhost:5000/calories/${user?.email}`, {
-        date: currentDate,
+        date: currentDate.toLocaleDateString("en-GB"),
         calories: item.calories,
         foodName: item.name,
       });
@@ -54,7 +54,7 @@ const CaloriesIntake = () => {
     );
     // Make POST request to update user's calorie intake with today's date and item's calories
     await axios.put(`http://localhost:5000/calories/remove/${user?.email}`, {
-      date: currentDate,
+      date: currentDate.toLocaleDateString("en-GB"),
       calories: calories,
       foodName: name,
     });
@@ -65,7 +65,7 @@ const CaloriesIntake = () => {
       const response = await axios.post(
         `http://localhost:5000/user/caloriesData/${user?.email}`,
         {
-          dates: currentDate,
+          dates: currentDate.toLocaleDateString("en-GB"),
         }
       );
       const userData = response.data;
@@ -175,7 +175,7 @@ const CaloriesIntake = () => {
                 <button
                   className="btn btn-primary text-white  btn-xs sm:btn-sm md:btn-md"
                   key={index}
-                  onClick={() => handleFoodBtn(item._id)}
+                  onClick={() => handleFoodBtn(item._id, item.calories,item.name)}
                 >
                   <span className="text-xl font-bold">{item.name}</span>
                   <MdDeleteOutline size="1.8em" />
