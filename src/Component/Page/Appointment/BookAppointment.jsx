@@ -9,12 +9,63 @@ import {
 } from "antd";
 import axios from "axios";
 import dayjs from "dayjs";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../Provider/Authprovider/AuthProvider";
+
 const BookAppointment = () => {
   const [selectedDate, setSelectedDate] = useState("");
   const navigate = useNavigate();
-  const dateChange = ( dateString) => {
+  const { user } = useContext(AuthContext);
+  const [usersData, setUsersData] = useState("");
+  const [doctorOptions, setDoctorOptions] = useState([]);
+  const [selectedAppointmentType, setSelectedAppointmentType] = useState("");
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:5000/user/${user.email}`
+        );
+        if (response.ok) {
+          const userData = await response.json();
+          // console.log(usersData?)
+          setUsersData(userData.user);
+        } else {
+          throw new Error("Failed to fetch user data");
+        }
+      } catch (error) {
+        console.error(error);
+        // Handle error
+      }
+    };
+
+    fetchUserData();
+  }, [user]);
+
+  useEffect(() => {
+    const fetchDoctorsByType = async (type) => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/doctorData/type/${type}`
+        );
+        setDoctorOptions(response.data);
+      } catch (error) {
+        console.error("Error fetching doctors by type:", error);
+      }
+    };
+
+    if (selectedAppointmentType) {
+      fetchDoctorsByType(selectedAppointmentType);
+    }
+  }, [selectedAppointmentType]);
+
+  const handleAppointmentTypeChange = (value) => {
+    setSelectedAppointmentType(value);
+  };
+  console.log(doctorOptions[0]?.name);
+
+  const dateChange = (dateString) => {
     setSelectedDate(dateString);
   };
   const onFinish = async (values) => {
@@ -24,6 +75,9 @@ const BookAppointment = () => {
 
     values.appointment_date = selectedDate;
     values.start_time = formattedTime;
+    values.username = usersData?.name
+    values.doctor_id = doctorOptions[0]?.name
+    values.status = "Scheduled"
     console.log(values);
     try {
       const response = await axios.post(
@@ -34,7 +88,7 @@ const BookAppointment = () => {
 
       // Display success message using Ant Design message component
       message.success("Appointment added successfully");
-      navigate("/appointment")
+      navigate("/appointment");
     } catch (error) {
       console.error("SignUp failed:", error?.response?.data?.error);
       // Display error message using Ant Design message component
@@ -45,6 +99,7 @@ const BookAppointment = () => {
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+  // console.log(usersData);
   return (
     <div className="flex flex-col justify-center text-center w-full space-y-10">
       <h3 className="font-bold text-3xl">AppointBook Form !</h3>
@@ -59,30 +114,25 @@ const BookAppointment = () => {
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
         autoComplete="on"
+        initialValues={{
+          username: usersData?.name,
+          doctor_id: doctorOptions[0]?.name,
+        }}
       >
         <Form.Item
           label="Username"
           name="username"
-          rules={[
-            {
-              required: true,
-              message: "Please input your username!",
-            },
-          ]}
+          initialValue={usersData.name}
         >
-          <Input />
+          <Input placeholder={usersData.name} disabled className="font-bold" />
         </Form.Item>
+
         <Form.Item
           label="Doctor Name"
           name="doctor_id"
-          rules={[
-            {
-              required: true,
-              message: "Please input Doctor name!",
-            },
-          ]}
+          initialValue={doctorOptions.length > 0 ? doctorOptions[0]?.name : ""}
         >
-          <Input />
+          <Input placeholder={doctorOptions.length > 0 ? doctorOptions[0]?.name : ""} disabled />
         </Form.Item>
 
         <Form.Item
@@ -103,7 +153,10 @@ const BookAppointment = () => {
             },
           ]}
         >
-          <Select placeholder="select your Appointment Type">
+          <Select
+            placeholder="select your Appointment Type"
+            onChange={handleAppointmentTypeChange}
+          >
             <Select.Option value="ECG">ECG</Select.Option>
             <Select.Option value="Full Body Checkup">
               Full Body Checkup
@@ -113,10 +166,13 @@ const BookAppointment = () => {
         </Form.Item>
 
         <Form.Item name="status" label="Status">
-          <Select placeholder="select your status">
+          <Select
+            defaultValue="Scheduled"
+            disabled
+            placeholder="Scheduled"
+            className="font-bold"
+          >
             <Select.Option value="Scheduled">Scheduled</Select.Option>
-            <Select.Option value="Cancelled">Cancelled</Select.Option>
-            <Select.Option value="Completed">Completed</Select.Option>
           </Select>
         </Form.Item>
         <Form.Item name="start_time" label="Start Time">

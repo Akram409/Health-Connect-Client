@@ -30,7 +30,8 @@
         "start": "09:00 AM",
         "end": "01:00 PM"
       }
-    }
+    },
+    "type": ["ECG", "Full Body Checkup"]
   },
   {
     "_id": {
@@ -63,6 +64,7 @@
         "start": "09:00 AM",
         "end": "01:00 PM"
       }
-    }
+    },
+    "type": ["X-Ray"]
   }
 ]

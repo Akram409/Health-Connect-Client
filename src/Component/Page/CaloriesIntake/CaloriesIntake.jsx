@@ -48,7 +48,7 @@ const CaloriesIntake = () => {
       console.error("Error updating user calorie intake:", error);
     }
   };
-  const handleFoodBtn = async (id, calories,name) => {
+  const handleFoodBtn = async (id, calories, name) => {
     setSelectedFoods((prevSelectedFoods) =>
       prevSelectedFoods.filter((it) => it._id !== id)
     );
@@ -70,7 +70,7 @@ const CaloriesIntake = () => {
       );
       const userData = response.data;
       setCaloriesData(userData);
-      setSelectedFoods(userData[0] ? userData[0].food  : []);
+      setSelectedFoods(userData[0] ? userData[0].food : []);
     } catch (error) {
       console.error(error);
       // Handle error
@@ -82,23 +82,30 @@ const CaloriesIntake = () => {
   }, [user, caloriesData, currentDate]);
 
   const handleDateChange = (amount) => {
-
     const newDate = new Date(currentDate);
     newDate.setDate(newDate.getDate() + amount);
     setCurrentDate(newDate);
   };
 
-  console.log(currentDate.toLocaleDateString("en-GB"))
+  console.log(selectedFoods);
   return (
     <div className="mx-16 mb-40 ">
       <Profile />
       <div className="border-2 mt-28 p-10 rounded-box bg-[#D9D9D9]">
         <div className="flex  items-center justify-center mb-5 gap-5">
-          <FaAngleLeft size="2em" className="cursor-pointer" onClick={() => handleDateChange(-1)} />
+          <FaAngleLeft
+            size="2em"
+            className="cursor-pointer"
+            onClick={() => handleDateChange(-1)}
+          />
           <h1 className="text-3xl font-semibold text-center">
             Calories intake for {currentDate.toLocaleDateString("en-GB")}
           </h1>
-          <FaAngleRight size="2em" className="cursor-pointer" onClick={() => handleDateChange(1)}/>
+          <FaAngleRight
+            size="2em"
+            className="cursor-pointer"
+            onClick={() => handleDateChange(1)}
+          />
         </div>
         <div className="">
           <div className="text-center flex justify-evenly items-center gap-4 p-10 bg-[#FFFF] rounded-box mb-6">
@@ -116,7 +123,9 @@ const CaloriesIntake = () => {
                   <button
                     className="btn btn-primary text-white  btn-xs sm:btn-sm md:btn-md"
                     key={index}
-                    onClick={() => handleFoodBtn(item._id, item.calories,item.name)}
+                    onClick={() =>
+                      handleFoodBtn(item._id, item.calories, item.name)
+                    }
                   >
                     <span className="text-xl font-bold">{item.name}</span>
                     <MdDeleteOutline size="1.8em" />
@@ -150,7 +159,13 @@ const CaloriesIntake = () => {
                     {datas.map((item, index) => (
                       <button
                         key={index}
-                        className="btn btn-primary text-white  btn-xs sm:btn-sm md:btn-md lg:btn-lg mx-1 my-1"
+                        className={`btn ${
+                          selectedFoods.some(
+                            (selectedItem) => selectedItem.name === item.name
+                          )
+                            ? "btn-success"
+                            : "btn-primary"
+                        } text-white btn-xs sm:btn-sm md:btn-md lg:btn-lg mx-1 my-1`}
                         onClick={() => handleFoodClick(item)}
                       >
                         <span className="text-xl font-bold">{item.name}</span> :{" "}
@@ -175,7 +190,9 @@ const CaloriesIntake = () => {
                 <button
                   className="btn btn-primary text-white  btn-xs sm:btn-sm md:btn-md"
                   key={index}
-                  onClick={() => handleFoodBtn(item._id, item.calories,item.name)}
+                  onClick={() =>
+                    handleFoodBtn(item._id, item.calories, item.name)
+                  }
                 >
                   <span className="text-xl font-bold">{item.name}</span>
                   <MdDeleteOutline size="1.8em" />
