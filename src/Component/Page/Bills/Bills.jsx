@@ -3,6 +3,7 @@ import Profile from "../../Share/Profile/Profile";
 import { FaAngleRight } from "react-icons/fa";
 import axios from "axios";
 
+const email = "admin@gmail.com"
 const Bills = () => {
   const [datas, setData] = useState([]);
   const [selectData, setSelectData] = useState();
@@ -19,13 +20,19 @@ const Bills = () => {
     fetchData();
   }, [datas]);
 
-  const handleMakePayment = async (id) => {
+  const handleMakePayment = async (selectData) => {
     try {
-      const response = await axios.post(`http://localhost:5000/bills/${id}`, {
+      console.log(selectData)
+      const response2 = await axios.put(`http://localhost:5000/totalBill/${email}`, {
+        totalAmount:selectData?.totalAmount,
+      });
+
+      const response = await axios.post(`http://localhost:5000/bills/${selectData?._id}`, {
         totalAmount: 0,
       });
+      
+      
       console.log("Payment made successfully:", response.data);
-      // Assuming you want to refresh the data after payment is made
       fetchData();
     } catch (error) {
       console.error("Error making payment:", error);
@@ -36,7 +43,6 @@ const Bills = () => {
     document.getElementById("my_modal_5").showModal();
   };
 
-  console.log(datas);
   return (
     <div className="mx-16 mb-40 ">
       <Profile />
@@ -93,7 +99,7 @@ const Bills = () => {
                         <form method="dialog">
                           <button
                             className="btn btn-warning font-bold"
-                            onClick={() => handleMakePayment(selectData?._id)}
+                            onClick={() => handleMakePayment(selectData)}
                           >
                             Make Payment
                           </button>

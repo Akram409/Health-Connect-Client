@@ -2,7 +2,7 @@
     {
       "_id": {
         "$oid": "65c23e2101c3ed467eb19c45"
-      },
+      },  
       "username": "tay_swift",
       "timestamp": "2023-01-01T10:00:00Z",
       "heartRate": 75,

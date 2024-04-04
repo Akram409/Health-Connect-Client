@@ -87,6 +87,9 @@ const NavbarTwo = () => {
             <li>
               <Link to="/immunisation">Immunisation</Link>
             </li>
+            <li>
+              <Link to="/caloriesIntake">CaloriesIntake</Link>
+            </li>
           </ul>
         </div>
         <Link className="text-3xl font-bold text-blue-800" to="/">
@@ -113,6 +116,9 @@ const NavbarTwo = () => {
           <li>
             <Link to="/immunisation">Immunisation</Link>
           </li>
+          <li>
+              <Link to="/caloriesIntake">CaloriesIntake</Link>
+            </li>
           <li>
             <button className="btn border border-black font-semibold">
               {usersData?.name}

@@ -21,6 +21,7 @@ dayjs.extend(dayLocaleData);
 const Dashboard = () => {
   const [datas, setData] = useState([]);
   const [medicationdata, setMedicationData] = useState([]);
+  const [totalBillsdata, setTotalBillsData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,6 +47,18 @@ const Dashboard = () => {
 
     fetchData();
   }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/totalBill");
+        setTotalBillsData(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const formatMonth = (timestamp) => {
     const date = new Date(timestamp);
@@ -63,7 +76,7 @@ const Dashboard = () => {
       "Nov",
       "Dec",
     ];
-    return monthNames[date.getMonth()]; // Get the month name from the array based on the month index
+    return monthNames[date.getMonth()];
   };
 
   const renderLineChart = (dataKey) => (
@@ -73,7 +86,7 @@ const Dashboard = () => {
         <XAxis
           dataKey="timestamp"
           padding={{ left: 30, right: 30 }}
-          tickFormatter={formatMonth} // Format the month on the X-axis
+          tickFormatter={formatMonth} 
         />
         <YAxis />
         <Tooltip />
@@ -258,7 +271,7 @@ const Dashboard = () => {
               <div className="card border-2">
                 <div className="card-body items-center text-center">
                   <h2 className="text-3xl font-bold ">Bills</h2>
-                  <p className="font-semibold text-4xl">$0 Overdue</p>
+                  <p className="font-semibold text-4xl">${totalBillsdata[0]?.totalBill} Overdue</p>
                   <div className="card-actions justify-center mt-5">
                     <Link to="/bills">
                       <button className="btn border-2 border-black">
