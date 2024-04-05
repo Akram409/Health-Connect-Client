@@ -1,5 +1,5 @@
 import Profile from "../../Share/Profile/Profile";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   LineChart,
   Line,
@@ -16,9 +16,11 @@ import dayLocaleData from "dayjs/plugin/localeData";
 import { Calendar, Col, Radio, Row, Select, Typography, theme } from "antd";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Provider/Authprovider/AuthProvider";
 
 dayjs.extend(dayLocaleData);
 const Dashboard = () => {
+  const { user } = useContext(AuthContext);
   const [datas, setData] = useState([]);
   const [medicationdata, setMedicationData] = useState([]);
   const [totalBillsdata, setTotalBillsData] = useState([]);
@@ -38,7 +40,9 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/healthData");
+        const response = await axios.get(
+          `http://localhost:5000/healthData/${user?.email}`
+        );
         setData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -81,12 +85,12 @@ const Dashboard = () => {
 
   const renderLineChart = (dataKey) => (
     <ResponsiveContainer width="100%" height={500}>
-      <LineChart data={datas}>
+      <LineChart data={datas?.data}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis
           dataKey="timestamp"
           padding={{ left: 30, right: 30 }}
-          tickFormatter={formatMonth} 
+          tickFormatter={formatMonth}
         />
         <YAxis />
         <Tooltip />
@@ -148,6 +152,17 @@ const Dashboard = () => {
             />
             <div role="tabpanel" className="tab-content py-5 lg:py-0 lg:p-10">
               {renderLineChart("oxygenLevel")}
+            </div>
+            <input
+              type="radio"
+              name="my_tabs_1"
+              role="tab"
+              className="tab"
+              aria-label="BMI"
+            />
+            <div role="tabpanel" className="tab-content p-10">
+              {renderLineChart("bmi.height")}
+              {renderLineChart("bmi.weight")}
             </div>
           </div>
           <div>
@@ -271,7 +286,9 @@ const Dashboard = () => {
               <div className="card border-2">
                 <div className="card-body items-center text-center">
                   <h2 className="text-3xl font-bold ">Bills</h2>
-                  <p className="font-semibold text-4xl">${totalBillsdata[0]?.totalBill} Overdue</p>
+                  <p className="font-semibold text-4xl">
+                    ${totalBillsdata[0]?.totalBill} Overdue
+                  </p>
                   <div className="card-actions justify-center mt-5">
                     <Link to="/bills">
                       <button className="btn border-2 border-black">

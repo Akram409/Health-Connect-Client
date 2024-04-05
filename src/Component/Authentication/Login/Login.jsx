@@ -4,18 +4,17 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import {
   // NavLink,
-  // useLocation,
+  useLocation,
   useNavigate,
   useNavigation,
 } from "react-router-dom";
 import { validateEmail } from "../../../lib/util";
 
 const Login = () => {
-  const { setUser, login } = useContext(AuthContext);
+  const { user, login } = useContext(AuthContext);
   const navigate = useNavigate();
   const navigation = useNavigation();
-  // const location = useLocation();
-  // const from = location.state?.from?.pathname || "/";
+  const location = useLocation();
   const [allUser, setAllUser] = useState([]);
 
   useEffect(() => {
@@ -36,13 +35,8 @@ const Login = () => {
   }
   const onFinish = async ({ email, password }) => {
     try {
-      login(email, password);
-
-      const foundUser = allUser.find((u) => u.email === email);
-      setUser(foundUser);
-
-      message.success("Login successful");
-      navigate("/");
+      await login(email, password);
+      
     } catch (error) {
       console.error("Login failed:", error);
     }

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import { message } from "antd";
 export const AuthContext = createContext(null);
 
 
@@ -36,11 +37,13 @@ const AuthProvider = ({ children }) => {
         password,
       });
       const user = response.data;
-      console.log("user", user);
-
       localStorage.setItem("loginUser", JSON.stringify(user));
+      message.success("Login successful");
+      console.log("user", user);
+      
       window.location.reload();
     } catch (error) {
+      message.error("Invalid Email and Password")
       console.error("Login failed:", error);
     }
   };

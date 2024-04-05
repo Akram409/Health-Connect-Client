@@ -1,171 +1,204 @@
-  [
-    {
-      "_id": {
-        "$oid": "65c23e2101c3ed467eb19c45"
-      },  
-      "username": "tay_swift",
-      "timestamp": "2023-01-01T10:00:00Z",
-      "heartRate": 75,
-      "bloodPressure": {
-        "systolic": 120,
-        "diastolic": 80
+[
+  {
+    "userEmail": "tay_swift",
+    "data": [
+      {
+        "month": "January",
+        "timestamp": "2023-01-01T10:00:00Z",
+        "heartRate": 75,
+        "bloodPressure": { "systolic": 120, "diastolic": 80 },
+        "oxygenLevel": 98,
+        "bmi": { "height": 181, "weight": 71 }
       },
-      "oxygenLevel": 98
-    },
-    {
-      "_id": {
-        "$oid": "65c2400c01c3ed467eb19c46"
+      {
+        "month": "February",
+        "timestamp": "2023-02-01T10:00:00Z",
+        "heartRate": 78,
+        "bloodPressure": { "systolic": 126, "diastolic": 76 },
+        "oxygenLevel": 99,
+        "bmi": { "height": 171, "weight": 61 }
       },
-      "username": "tay_swift",
-      "timestamp": "2023-02-01T10:00:00Z",
-      "heartRate": 78,
-      "bloodPressure": {
-        "systolic": 126,
-        "diastolic": 76
+      {
+        "month": "March",
+        "timestamp": "2023-03-01T10:00:00Z",
+        "heartRate": 78,
+        "bloodPressure": { "systolic": 120, "diastolic": 80 },
+        "oxygenLevel": 98,
+        "bmi": { "height": 180, "weight": 70 }
       },
-      "oxygenLevel": 99
-    },
-    {
-      "_id": {
-        "$oid": "65c240b001c3ed467eb19c47"
+      {
+        "month": "April",
+        "timestamp": "2023-04-01T10:00:00Z",
+        "heartRate": 80,
+        "bloodPressure": { "systolic": 126, "diastolic": 84 },
+        "oxygenLevel": 98,
+        "bmi": { "height": 173, "weight": 63 }
       },
-      "username": "tay_swift",
-      "timestamp": "2023-03-01T10:00:00Z",
-      "heartRate": 78,
-      "bloodPressure": {
-        "systolic": 120,
-        "diastolic": 80
+      {
+        "month": "May",
+        "timestamp": "2023-05-01T10:00:00Z",
+        "heartRate": 88,
+        "bloodPressure": { "systolic": 129, "diastolic": 84 },
+        "oxygenLevel": 96,
+        "bmi": { "height": 177, "weight": 67 }
       },
-      "oxygenLevel": 98
-    },
-    {
-      "_id": {
-        "$oid": "65c240d401c3ed467eb19c48"
+      {
+        "month": "June",
+        "timestamp": "2023-06-01T10:00:00Z",
+        "heartRate": 70,
+        "bloodPressure": { "systolic": 120, "diastolic": 83 },
+        "oxygenLevel": 97,
+        "bmi": { "height": 182, "weight": 72 }
       },
-      "username": "tay_swift",
-      "timestamp": "2023-04-01T10:00:00Z",
-      "heartRate": 80,
-      "bloodPressure": {
-        "systolic": 126,
-        "diastolic": 84
+      {
+        "month": "July",
+        "timestamp": "2023-07-01T10:00:00Z",
+        "heartRate": 78,
+        "bloodPressure": { "systolic": 118, "diastolic": 80 },
+        "oxygenLevel": 98,
+        "bmi": { "height": 178, "weight": 68 }
       },
-      "oxygenLevel": 98
-    },
-    {
-      "_id": {
-        "$oid": "65c240e901c3ed467eb19c49"
+      {
+        "month": "August",
+        "timestamp": "2023-08-01T12:00:00Z",
+        "heartRate": 80,
+        "bloodPressure": { "systolic": 118, "diastolic": 76 },
+        "oxygenLevel": 98,
+        "bmi": { "height": 176, "weight": 66 }
       },
-      "username": "tay_swift",
-      "timestamp": "2023-05-01T10:00:00Z",
-      "heartRate": 88,
-      "bloodPressure": {
-        "systolic": 129,
-        "diastolic": 84
+      {
+        "month": "September",
+        "timestamp": "2023-09-01T12:00:00Z",
+        "heartRate": 88,
+        "bloodPressure": { "systolic": 120, "diastolic": 76 },
+        "oxygenLevel": 99,
+        "bmi": { "height": 175, "weight": 65 }
       },
-      "oxygenLevel": 96
-    },
-    {
-      "_id": {
-        "$oid": "65c2411a01c3ed467eb19c4a"
+      {
+        "month": "October",
+        "timestamp": "2023-10-01T14:00:00Z",
+        "heartRate": 90,
+        "bloodPressure": { "systolic": 128, "diastolic": 80 },
+        "oxygenLevel": 97,
+        "bmi": { "height": 179, "weight": 69 }
       },
-      "username": "tay_swift",
-      "timestamp": "2023-05-01T10:00:00Z",
-      "heartRate": 78,
-      "bloodPressure": {
-        "systolic": 120,
-        "diastolic": 80
+      {
+        "month": "November",
+        "timestamp": "2023-11-01T14:00:00Z",
+        "heartRate": 80,
+        "bloodPressure": { "systolic": 120, "diastolic": 80 },
+        "oxygenLevel": 98,
+        "bmi": { "height": 172, "weight": 62 }
       },
-      "oxygenLevel": 96
-    },
-    {
-      "_id": {
-        "$oid": "65c2418001c3ed467eb19c4b"
+      {
+        "month": "December",
+        "timestamp": "2023-12-01T14:00:00Z",
+        "heartRate": 82,
+        "bloodPressure": { "systolic": 124, "diastolic": 80 },
+        "oxygenLevel": 98,
+        "bmi": { "height": 174, "weight": 64 }
+      }
+    ]
+  },
+  {
+    "userEmail": "t@gmail.com",
+    "data": [
+      {
+        "month": "January",
+        "timestamp": "2023-01-01T10:00:00Z",
+        "heartRate": 75,
+        "bloodPressure": { "systolic": 120, "diastolic": 80 },
+        "oxygenLevel": 98,
+        "bmi": { "height": 181, "weight": 71 }
       },
-      "username": "tay_swift",
-      "timestamp": "2023-06-01T10:00:00Z",
-      "heartRate": 70,
-      "bloodPressure": {
-        "systolic": 120,
-        "diastolic": 83
+      {
+        "month": "February",
+        "timestamp": "2023-02-01T10:00:00Z",
+        "heartRate": 78,
+        "bloodPressure": { "systolic": 126, "diastolic": 76 },
+        "oxygenLevel": 99,
+        "bmi": { "height": 171, "weight": 61 }
       },
-      "oxygenLevel": 97
-    },
-    {
-      "_id": {
-        "$oid": "65c2434901c3ed467eb19c4c"
+      {
+        "month": "March",
+        "timestamp": "2023-03-01T10:00:00Z",
+        "heartRate": 78,
+        "bloodPressure": { "systolic": 120, "diastolic": 80 },
+        "oxygenLevel": 98,
+        "bmi": { "height": 180, "weight": 70 }
       },
-      "username": "tay_swift",
-      "timestamp": "2023-07-01T10:00:00Z",
-      "heartRate": 78,
-      "bloodPressure": {
-        "systolic": 118,
-        "diastolic": 80
+      {
+        "month": "April",
+        "timestamp": "2023-04-01T10:00:00Z",
+        "heartRate": 80,
+        "bloodPressure": { "systolic": 126, "diastolic": 84 },
+        "oxygenLevel": 98,
+        "bmi": { "height": 173, "weight": 63 }
       },
-      "oxygenLevel": 98
-    },
-    {
-      "_id": {
-        "$oid": "65c243df01c3ed467eb19c4d"
+      {
+        "month": "May",
+        "timestamp": "2023-05-01T10:00:00Z",
+        "heartRate": 88,
+        "bloodPressure": { "systolic": 129, "diastolic": 84 },
+        "oxygenLevel": 96,
+        "bmi": { "height": 177, "weight": 67 }
       },
-      "username": "tay_swift",
-      "timestamp": "2023-08-01T12:00:00Z",
-      "heartRate": 80,
-      "bloodPressure": {
-        "systolic": 118,
-        "diastolic": 76
+      {
+        "month": "June",
+        "timestamp": "2023-06-01T10:00:00Z",
+        "heartRate": 70,
+        "bloodPressure": { "systolic": 120, "diastolic": 83 },
+        "oxygenLevel": 97,
+        "bmi": { "height": 182, "weight": 72 }
       },
-      "oxygenLevel": 98
-    },
-    {
-      "_id": {
-        "$oid": "65c245d601c3ed467eb19c4e"
+      {
+        "month": "July",
+        "timestamp": "2023-07-01T10:00:00Z",
+        "heartRate": 78,
+        "bloodPressure": { "systolic": 118, "diastolic": 80 },
+        "oxygenLevel": 98,
+        "bmi": { "height": 178, "weight": 68 }
       },
-      "username": "tay_swift",
-      "timestamp": "2023-09-01T12:00:00Z",
-      "heartRate": 88,
-      "bloodPressure": {
-        "systolic": 120,
-        "diastolic": 76
+      {
+        "month": "August",
+        "timestamp": "2023-08-01T12:00:00Z",
+        "heartRate": 80,
+        "bloodPressure": { "systolic": 118, "diastolic": 76 },
+        "oxygenLevel": 98,
+        "bmi": { "height": 176, "weight": 66 }
       },
-      "oxygenLevel": 99
-    },
-    {
-      "_id": {
-        "$oid": "65c245ec01c3ed467eb19c4f"
+      {
+        "month": "September",
+        "timestamp": "2023-09-01T12:00:00Z",
+        "heartRate": 88,
+        "bloodPressure": { "systolic": 120, "diastolic": 76 },
+        "oxygenLevel": 99,
+        "bmi": { "height": 175, "weight": 65 }
       },
-      "username": "tay_swift",
-      "timestamp": "2023-10-01T14:00:00Z",
-      "heartRate": 90,
-      "bloodPressure": {
-        "systolic": 128,
-        "diastolic": 80
+      {
+        "month": "October",
+        "timestamp": "2023-10-01T14:00:00Z",
+        "heartRate": 90,
+        "bloodPressure": { "systolic": 128, "diastolic": 80 },
+        "oxygenLevel": 97,
+        "bmi": { "height": 179, "weight": 69 }
       },
-      "oxygenLevel": 97
-    },
-    {
-      "_id": {
-        "$oid": "65c2468001c3ed467eb19c50"
+      {
+        "month": "November",
+        "timestamp": "2023-11-01T14:00:00Z",
+        "heartRate": 80,
+        "bloodPressure": { "systolic": 120, "diastolic": 80 },
+        "oxygenLevel": 98,
+        "bmi": { "height": 172, "weight": 62 }
       },
-      "username": "tay_swift",
-      "timestamp": "2023-11-01T14:00:00Z",
-      "heartRate": 80,
-      "bloodPressure": {
-        "systolic": 120,
-        "diastolic": 80
-      },
-      "oxygenLevel": 98
-    },
-    {
-      "_id": {
-        "$oid": "65c2468f01c3ed467eb19c51"
-      },
-      "username": "tay_swift",
-      "timestamp": "2023-12-01T14:00:00Z",
-      "heartRate": 82,
-      "bloodPressure": {
-        "systolic": 124,
-        "diastolic": 80
-      },
-      "oxygenLevel": 98
-    }
-  ]
+      {
+        "month": "December",
+        "timestamp": "2023-12-01T14:00:00Z",
+        "heartRate": 82,
+        "bloodPressure": { "systolic": 124, "diastolic": 80 },
+        "oxygenLevel": 98,
+        "bmi": { "height": 174, "weight": 64 }
+      }
+    ]
+  }
+]

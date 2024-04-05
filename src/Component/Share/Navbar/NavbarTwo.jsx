@@ -47,7 +47,7 @@ const NavbarTwo = () => {
 
   return (
     <div className="navbar bg-base-100">
-      <div className="navbar-start max-w-[40%]">
+      <div className="navbar-start max-w-[20%]">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg

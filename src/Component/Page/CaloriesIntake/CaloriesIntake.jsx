@@ -12,6 +12,10 @@ const CaloriesIntake = () => {
   const [caloriesData, setCaloriesData] = useState([]);
   const [selectedFoods, setSelectedFoods] = useState([]);
   const [currentDate, setCurrentDate] = useState(new Date());
+  const [morningFoods, setMorningFoods] = useState([]);
+  const [afternoonFoods, setAfternoonFoods] = useState([]);
+  const [nightFoods, setNightFoods] = useState([]);
+  const [category, setCategory] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,22 +37,33 @@ const CaloriesIntake = () => {
       const newCalories = item.calories;
       setSelectedFoods((prevSelectedFoods) => [...prevSelectedFoods, item]);
 
-      // Make POST request to update user's calorie intake with today's date and item's calories
+      // Make POST request to update user's calorie intake with today's date, item's calories, and category
       await axios.post(`http://localhost:5000/calories/${user?.email}`, {
         date: currentDate.toLocaleDateString("en-GB"),
         calories: item.calories,
         foodName: item.name,
+        category: category, // Use the category state here
       });
       message.success("Calories updated successfully");
       setCaloriesData((prevUserData) => ({
         ...prevUserData,
         calories: newCalories,
       }));
+
+      // Determine which category the food belongs to and update the corresponding state
+      if (category === "morning") {
+        setMorningFoods((prevFoods) => [...prevFoods, item]);
+      } else if (category === "afternoon") {
+        setAfternoonFoods((prevFoods) => [...prevFoods, item]);
+      } else if (category === "night") {
+        setNightFoods((prevFoods) => [...prevFoods, item]);
+      }
     } catch (error) {
       console.error("Error updating user calorie intake:", error);
     }
   };
-  const handleFoodBtn = async (id, calories, name) => {
+
+  const handleFoodBtn = async (id, calories, name, category) => {
     setSelectedFoods((prevSelectedFoods) =>
       prevSelectedFoods.filter((it) => it._id !== id)
     );
@@ -57,6 +72,7 @@ const CaloriesIntake = () => {
       date: currentDate.toLocaleDateString("en-GB"),
       calories: calories,
       foodName: name,
+      category: category,
     });
   };
 
@@ -70,6 +86,31 @@ const CaloriesIntake = () => {
       );
       const userData = response.data;
       setCaloriesData(userData);
+
+      // Initialize variables to hold food items for each category
+      let morningFoodsArr = [];
+      let afternoonFoodsArr = [];
+      let nightFoodsArr = [];
+
+      // Iterate through the userData to categorize food items
+      userData.forEach((data) => {
+        data.food.forEach((food) => {
+          if (food.category === "morning") {
+            morningFoodsArr.push(food);
+          } else if (food.category === "afternoon") {
+            afternoonFoodsArr.push(food);
+          } else if (food.category === "night") {
+            nightFoodsArr.push(food);
+          }
+        });
+      });
+
+      // Set the categorized food items to their respective states
+      setMorningFoods(morningFoodsArr);
+      setAfternoonFoods(afternoonFoodsArr);
+      setNightFoods(nightFoodsArr);
+
+      // Set the selected foods to the first day's food items
       setSelectedFoods(userData[0] ? userData[0].food : []);
     } catch (error) {
       console.error(error);
@@ -85,6 +126,11 @@ const CaloriesIntake = () => {
     const newDate = new Date(currentDate);
     newDate.setDate(newDate.getDate() + amount);
     setCurrentDate(newDate);
+  };
+
+  const openFoodModal = (category) => {
+    setCategory(category);
+    document.getElementById("my_modal_5").showModal();
   };
 
   console.log(selectedFoods);
@@ -131,7 +177,12 @@ const CaloriesIntake = () => {
                     className="btn btn-primary text-white  btn-xs sm:btn-sm md:btn-md"
                     key={index}
                     onClick={() =>
-                      handleFoodBtn(item._id, item.calories, item.name)
+                      handleFoodBtn(
+                        item._id,
+                        item.calories,
+                        item.name,
+                        item.category
+                      )
                     }
                   >
                     <span className="text-xl font-bold">{item.name}</span>
@@ -153,9 +204,7 @@ const CaloriesIntake = () => {
             <div>
               <button
                 className="btn btn-accent font-semibold"
-                onClick={() =>
-                  document.getElementById("my_modal_5").showModal()
-                }
+                onClick={() => openFoodModal("morning")}
               >
                 Add Food
               </button>
@@ -192,13 +241,18 @@ const CaloriesIntake = () => {
             </div>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3  gap-2">
-            {selectedFoods.map((item, index) => (
+            {morningFoods.map((item, index) => (
               <>
                 <button
                   className="btn btn-primary text-white  btn-xs sm:btn-sm md:btn-md"
                   key={index}
                   onClick={() =>
-                    handleFoodBtn(item._id, item.calories, item.name)
+                    handleFoodBtn(
+                      item._id,
+                      item.calories,
+                      item.name,
+                      item.category
+                    )
                   }
                 >
                   <span className="text-xl font-bold">{item.name}</span>
@@ -217,9 +271,7 @@ const CaloriesIntake = () => {
             <div>
               <button
                 className="btn btn-accent font-semibold"
-                onClick={() =>
-                  document.getElementById("my_modal_5").showModal()
-                }
+                onClick={() => openFoodModal("afternoon")}
               >
                 Add Food
               </button>
@@ -256,13 +308,18 @@ const CaloriesIntake = () => {
             </div>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3  gap-2">
-            {selectedFoods.map((item, index) => (
+            {afternoonFoods.map((item, index) => (
               <>
                 <button
                   className="btn btn-primary text-white  btn-xs sm:btn-sm md:btn-md"
                   key={index}
                   onClick={() =>
-                    handleFoodBtn(item._id, item.calories, item.name)
+                    handleFoodBtn(
+                      item._id,
+                      item.calories,
+                      item.name,
+                      item.category
+                    )
                   }
                 >
                   <span className="text-xl font-bold">{item.name}</span>
@@ -281,9 +338,7 @@ const CaloriesIntake = () => {
             <div>
               <button
                 className="btn btn-accent font-semibold"
-                onClick={() =>
-                  document.getElementById("my_modal_5").showModal()
-                }
+                onClick={() => openFoodModal("night")}
               >
                 Add Food
               </button>
@@ -320,13 +375,18 @@ const CaloriesIntake = () => {
             </div>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3  gap-2">
-            {selectedFoods.map((item, index) => (
+            {nightFoods.map((item, index) => (
               <>
                 <button
                   className="btn btn-primary text-white  btn-xs sm:btn-sm md:btn-md"
                   key={index}
                   onClick={() =>
-                    handleFoodBtn(item._id, item.calories, item.name)
+                    handleFoodBtn(
+                      item._id,
+                      item.calories,
+                      item.name,
+                      item.category
+                    )
                   }
                 >
                   <span className="text-xl font-bold">{item.name}</span>

@@ -26,7 +26,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/login",
-        element:  <Login />,
+        element: <PrivateRouter loggedInRedirect={false}><Login /></PrivateRouter>,
       },
       {
         path: "/signUp",
@@ -38,39 +38,39 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element:  <PrivateRouter><Dashboard /></PrivateRouter>,
+        element:  <PrivateRouter loggedInRedirect={true}><Dashboard /></PrivateRouter>,
       },
       {
         path: "/appointment",
-        element: <PrivateRouter><Appointment /></PrivateRouter>,
+        element: <PrivateRouter loggedInRedirect={true}><Appointment /></PrivateRouter>,
       },
       {
         path: "/services",
-        element: <PrivateRouter><Services /></PrivateRouter>,
+        element: <PrivateRouter loggedInRedirect={true}><Services /></PrivateRouter>,
       },
       {
         path: "/healthData",
-        element: <PrivateRouter><HealthData /></PrivateRouter>,
+        element: <PrivateRouter loggedInRedirect={true}><HealthData /></PrivateRouter>,
       },
       {
         path: "/report",
-        element: <PrivateRouter><Report /></PrivateRouter>,
+        element: <PrivateRouter loggedInRedirect={true}><Report /></PrivateRouter>,
       },
       {
         path: "/bills",
-        element: <PrivateRouter><Bills /></PrivateRouter>,
+        element: <PrivateRouter loggedInRedirect={true}><Bills /></PrivateRouter>,
       },
       {
         path: "/caloriesIntake",
-        element: <PrivateRouter><CaloriesIntake /></PrivateRouter>,
+        element: <PrivateRouter loggedInRedirect={true}><CaloriesIntake /></PrivateRouter>,
       },
       {
         path: "/immunisation",
-        element: <PrivateRouter><Immunisation /></PrivateRouter> ,
+        element: <PrivateRouter loggedInRedirect={true}><Immunisation /></PrivateRouter> ,
       },
       {
         path: "/bookappointment",
-        element: <PrivateRouter><BookAppointment /></PrivateRouter> ,
+        element: <PrivateRouter loggedInRedirect={true}><BookAppointment /></PrivateRouter> ,
       },
       {
         path: "/private",
